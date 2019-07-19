@@ -1,0 +1,42 @@
+{
+    "data":[
+        {
+          "id": "1",
+          "label": "导航一",
+          "children": [
+            {
+              "id": "1-1",
+              "label": "Home",
+              "path":"/"
+            },
+            {
+              "id": "1-2",
+              "label": "Test",
+              "path":"/Test"
+            }
+           
+          ]
+        },
+        {
+          "id": "2",
+          "label": "导航二",
+          "children": [
+            {
+              "id": "2-1",
+              "label": "Charts",
+              "path":"/Charts"
+            },
+            {
+              "id": "2-2",
+              "label": "Table",
+              "path":"/Table"
+            },
+            {
+              "id": "2-3",
+              "label": "Ueditor",
+              "path":"/Ueditor"
+            }
+          ]
+        }
+      ]
+}

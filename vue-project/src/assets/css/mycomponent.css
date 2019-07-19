@@ -1,0 +1,27 @@
+/* 封装的自定义组件样式 */
+
+
+
+/* 消息提示样式 */
+.my-msg{
+    width: 346px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #f3f3f3;
+    box-shadow: 0 0 3px 2px;
+    position: fixed;
+    top: 10vh;
+    left: 35vw;
+    
+}
+.my-msg .my-msg-cancel-btn::after{
+      position: absolute; 
+      display: block;
+      content: '×';
+      font-size: 20px;
+      width: 30px;
+      height: 30px; 
+      top: -3px;
+      right: 0px; 
+}
