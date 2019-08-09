@@ -25,9 +25,8 @@
           </div>
         </Header>
         <Content>
-          <router-view />
+          <div class="mid-content"><router-view /></div>
         </Content>
-        <Footer>Footer</Footer>
       </Layout>
     </Layout>
   </div>
@@ -74,5 +73,10 @@ export default {
       width: 40px;
     }
   }
+  .mid-content{
+    height: 90vh;
+    overflow-y: scroll;
+  }
+ 
 }
 </style>

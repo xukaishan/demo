@@ -21,13 +21,50 @@ router.get('/api/getNavData', async (ctx, next) => {
         resolve(data)
       }
     });
-  }).then((data)=>{
+  }).then((data) => {
     ctx.body = data
   })
 })
 
 //上传文件
+// router.post('/api/upload', async (ctx, next) => {
+//   const file = ctx.request.files.file;   // 获取上传文件
+//   const reader = fs.createReadStream(file.path);  // 创建可读流
+//   const filePath = path.join(__dirname, '../', '/static/upload/');
+//   // 组装成绝对路径
+//   const fileResource = filePath + `/${file.name}`;
+//   const upStream = fs.createWriteStream(fileResource); // 创建可写流
+//   reader.pipe(upStream);  // 可读流通过管道写入可写流
+//   console.log(upStream)
+//   return ctx.body = { errcode: 0, errmsg: '上传成功' };
+
+// })
 router.post('/api/upload', async (ctx, next) => {
+  const file = ctx.request.files.file;   // 获取上传文件
+  console.log( ctx.request)
+  const reader = fs.createReadStream(file.path);  // 创建可读流
+  const filePath = path.join(__dirname, '../', '/static/upload/');
+  // 组装成绝对路径
+  const fileResource = filePath + `/${file.name}`;
+  const upStream = fs.createWriteStream(fileResource); // 创建可写流
+  reader.pipe(upStream);  // 可读流通过管道写入可写流
+  console.log(upStream)
+  return ctx.body = { errcode: 0, errmsg: '上传成功',src: file.name};
+
+})
+
+
+/* 读取excel */
+router.get('/api/getExcelData', async (ctx, next) => {
+  await new Promise((resolve, reject) => {
+    const workSheetsFromBuffer = xlsx.parse(fs.readFileSync(path.join(__dirname, `../static/upload/2.xls`)));
+    console.log(JSON.stringify(workSheetsFromBuffer))
+    resolve(workSheetsFromBuffer)
+  }).then((data) => {
+    ctx.body = data
+  })
+})
+router.post('/api/question/excel/upload', async (ctx, next) => {
   const file = ctx.request.files.file;   // 获取上传文件
   const reader = fs.createReadStream(file.path);  // 创建可读流
   const filePath = path.join(__dirname, '../', '/static/upload/');
@@ -36,20 +73,85 @@ router.post('/api/upload', async (ctx, next) => {
   const upStream = fs.createWriteStream(fileResource); // 创建可写流
   reader.pipe(upStream);  // 可读流通过管道写入可写流
   console.log(upStream)
-  return ctx.body = { errcode: 0, errmsg: '上传成功' };
+  return ctx.body = {
+    "errcode": 0,
+    "errmsg": "ok",
+    "detail": null,
+    "data": {
+      "value": "756c6d8560b1479ba070a94f3d468cca",
+      "key": null
+    }
+  };
 
 })
 
+router.post('/api/submit', async (ctx, next) => {
+  console.log(ctx.request.body)
+  ctx.body = { errcode: 0, errmsg: 'ok' };
 
-/* 读取excel */
-router.get('/api/getExcelData', async (ctx, next) => {
-  await new Promise((resolve, reject) => { 
-    const workSheetsFromBuffer = xlsx.parse(fs.readFileSync(path.join(__dirname,`../static/upload/2.xls`)));
-    console.log(JSON.stringify(workSheetsFromBuffer))
-        resolve(workSheetsFromBuffer)
-  }).then((data)=>{
-    ctx.body = data
-  })
+})
+router.post('/api/question/analysis/saveQuestion', async (ctx, next) => {
+  console.log(ctx.request.body)
+  ctx.body = { errcode: 0, errmsg: 'ok' };
+
+})
+router.get('/api/question/analysis/getQuestion', async (ctx, next) => {
+  console.log(ctx.request.body)
+  ctx.body = {
+    "errcode": 0,
+    "errmsg": "ok",
+    "detail": null,
+    "data": {
+      "serialNo": 33,
+      "question": [
+        {
+          "content": "填空。"
+        },
+        {
+          "content": "(1)计算86÷2时，可以先算(　　)÷2＝(　　)，再算(　　)÷2＝(　　)，然后将两个商相加：(　　)＋(　　)＝(　　)，所以86÷2＝(　　)。"
+        },
+        {
+          "content": "(2)70里面有(　　)个7；从39中连续减去(　　)个3的差为0。"
+        },
+        {
+          "content": "(3)在〇里填上“＞”“＜”或“＝”。"
+        },
+        {
+          "content": "44÷4〇12　　　　82÷2〇40　　　　"
+        },
+        {
+          "content": "32〇96÷3　　　　23〇66÷3　　　　"
+        },
+        {
+          "content": "(4)62是2的(　　)倍；(　　)的3倍是99。"
+        },
+        {
+          "content": "(5)将87个苹果平均分成4份，每份是(　　)个，还剩(　　)个。"
+        }
+      ],
+      "answer": [
+        {
+          "content": "(1)80　40　6　3　40　3　43　43"
+        },
+        {
+          "content": "(2)10　13"
+        },
+        {
+          "content": "(3)＜　＞　＝　＞"
+        },
+        {
+          "content": "(4)31　33"
+        },
+        {
+          "content": "(5)21　3"
+        }
+      ],
+      "analysis": null,
+      "questionId": 2
+    }
+  }
+    ;
+
 })
 
 

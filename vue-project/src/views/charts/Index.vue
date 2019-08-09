@@ -54,7 +54,6 @@ export default {
       border-collapse: collapse;
       td,th{
         border: 1px solid #ddd;
-        width: 120px;
       }
       .mythead{
 
