@@ -99,6 +99,7 @@ export default {
      console.log(this.$el);
   },
   methods: {
+    /* 递归换键名 */
     cpt_menu(arr) {
       return arr.map(itm => {
         return (

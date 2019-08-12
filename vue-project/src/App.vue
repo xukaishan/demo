@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Layout>
-      <Sider hide-trigger>
+      <!-- <Sider hide-trigger>
         <Menu
           active-key="1-1"
           theme="dark"
@@ -17,13 +17,13 @@
             <Menu-item v-for="item in v.children" :key="item.id" :name="item.path">{{item.label}}</Menu-item>
           </Submenu>
         </Menu>
-      </Sider>
+      </Sider> -->
       <Layout>
-        <Header>
+        <!-- <Header>
           <div class="avater">
             <img src="http://localhost:3000/upload/avater.jpeg" alt="" width="100%">
           </div>
-        </Header>
+        </Header> -->
         <Content>
           <div class="mid-content"><router-view /></div>
         </Content>

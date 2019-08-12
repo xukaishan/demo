@@ -1,25 +1,79 @@
 <template>
-  <div class="table">
-table
+  <div>
+    <br />
+    <RowItem :rowItem="rowItem1" @rowItemSelectChange="rowItemSelectChange1" />
+    <br />
+    <RowItem :rowItem="rowItem2" @rowItemSelectChange="rowItemSelectChange2">
+      <div slot="con_slot">
+        <i-input v-model="value" placeholder="请输入..." style="width: 300px"></i-input>
+        <i-button @click="resviewHandlerClick">查询</i-button>
+      </div>
+    </RowItem>
+    <br />
+    <RowItem :rowItem="rowItem3">
+      <template slot="con_slot">
+        <i-input v-model="value" placeholder="请输入.." style="width: 300px"></i-input>
+        <i-button @click="resviewHandlerClick">查询</i-button>
+      </template>
+    </RowItem>
   </div>
 </template>
 
 <script>
-
+import RowItem from "@/components/RowItem.vue";
 export default {
+  components: {
+    RowItem
+  },
   data() {
     return {
+      value: "",
+      rowItem1: {
+        tit: "年级",
+        class: "grade",
+        list: [
+          { id: "12345", name: "一年级" },
+          { id: "12344", name: "二年级" },
+          { id: "12343", name: "三年级" },
+          { id: "12342", name: "四年级" },
+          { id: "12341", name: "五年级" },
+          { id: "12340", name: "六年级" },
+          { id: "123401", name: "七年级" },
+          { id: "123402", name: "八年级" },
+          { id: "113403", name: "九年级" },
+          { id: "124401", name: "高一" },
+          { id: "127402", name: "高二" },
+          { id: "128403", name: "高三" }
+        ]
+      },
+      rowItem2: {
+        tit: "学期",
+        class: "trem",
+        list: [
+          { id: "22345", name: "全一册" },
+          { id: "22344", name: "上学期" },
+          { id: "22343", name: "下学期" }
+        ]
+      },
+      rowItem3: {
+        tit: "审核人",
+        class: "resview"
+      }
     };
   },
-  components: {
-
-  },
-  methods:{
-     
+  methods: {
+    resviewHandlerClick() {
+      console.log(this.value);
+    },
+    rowItemSelectChange1(val) {
+      console.log(val);
+    },
+    rowItemSelectChange2(val) {
+      console.log(val);
+    }
   }
 };
 </script>
 
 <style scoped lang='less'>
-
 </style>
