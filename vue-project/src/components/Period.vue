@@ -68,7 +68,8 @@ export default {
     /* 学段 */
     itemHandlerClick(item) {
       this.params = {
-        periodId: item.id
+        periodId: item.id,
+        periodName: item.name
       };
       this.style(event, `${item.name}`);
     },
