@@ -17,7 +17,7 @@
       <ul class="list" ref="ulel">
         <li
           class="item itm"
-          :class="{active:item.id==7,active7:item.id==7}"
+          :class="{active:item.id==rowItem.list[0].id&&rowItem.class=='date',activeFirst:item.id==rowItem.list[0].id}"
           v-for="item in rowItem.list"
           :key="item.id"
           @click="itemHandlerClick(item)"
@@ -42,7 +42,7 @@
         value-format="yyyy-MM-dd"
         start-placeholder="开始日期"
         end-placeholder="结束日期"
-        :clearable = false
+        :clearable="false"
         @change="datePickerChange"
       ></el-date-picker>
     </div>
@@ -132,11 +132,13 @@ export default {
       this.style();
     },
     style() {
-      (document.querySelectorAll(`.${this.rowItem.classId||this.rowItem.class} .itm`) || []).forEach(
-        itm => {
-          itm.classList.remove("active");
-        }
-      );
+      (
+        document.querySelectorAll(
+          `.${this.rowItem.classId || this.rowItem.class} .itm`
+        ) || []
+      ).forEach(itm => {
+        itm.classList.remove("active");
+      });
       if (event) event.currentTarget.classList.add("active");
     },
     datePickerChange(val) {
@@ -148,7 +150,11 @@ export default {
       // this.$emit("rowItemSelectChange", this.dateData);
     },
     initDatePicker() {
-      document.querySelectorAll(`.${this.rowItem.classId||this.rowItem.class} .active7`)[0].click();
+      document
+        .querySelectorAll(
+          `.${this.rowItem.classId || this.rowItem.class} .activeFirst`
+        )[0]
+        .click();
     },
     //获取指定时间
     computeDate(n) {
