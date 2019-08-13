@@ -8,12 +8,15 @@ import {get,post} from './api/http'
 import qs from 'qs'
 import iView from 'iview';
 import * as func from '../test/unit/func/func'
-
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import './assets/css/common.css'; 
 import './assets/css/mycomponent.css' 
 import 'iview/dist/styles/iview.css';
 
 Vue.use(iView);
+Vue.use(ElementUI);
+
 
 
 Vue.prototype.$qs = qs;

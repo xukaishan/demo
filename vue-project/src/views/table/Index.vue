@@ -1,6 +1,11 @@
 <template>
   <div>
     <br />
+    <RowItem :rowItem="rowItem0" @rowItemDateChange="rowItemSelectChange0" />
+    <br />
+    <RowItem :rowItem="rowItem01" @rowItemDateChange="rowItemSelectChange01" />
+   
+    <br />
     <RowItem :rowItem="rowItem1" @rowItemSelectChange="rowItemSelectChange1" />
     <br />
     <RowItem :rowItem="rowItem2" @rowItemSelectChange="rowItemSelectChange2">
@@ -20,14 +25,34 @@
 </template>
 
 <script>
-import RowItem from "@/components/RowItem.vue";
+// import RowItem from "@/components/RowItem.vue";
 export default {
-  components: {
-    RowItem
-  },
+  // components: {
+  //   RowItem
+  // },
   data() {
     return {
       value: "",
+      rowItem0: {
+        tit: "日期",
+        class: "date",
+        classId:'date1',
+        list: [
+          { id: "7", name: "最近7天" },
+          { id: "30", name: "最近30天" },
+          { id: "365", name: "最近一年" }
+        ]
+      },
+      rowItem01: {
+        tit: "日期",
+        class: "date",
+        classId:'date2',
+        list: [
+          { id: "7", name: "最近7天" },
+          { id: "30", name: "最近30天" },
+          { id: "365", name: "最近一年" }
+        ]
+      },
       rowItem1: {
         tit: "年级",
         class: "grade",
@@ -64,6 +89,12 @@ export default {
   methods: {
     resviewHandlerClick() {
       console.log(this.value);
+    },
+    rowItemSelectChange0(val) {
+      console.log(val);
+    },
+    rowItemSelectChange01(val) {
+      console.log(val);
     },
     rowItemSelectChange1(val) {
       console.log(val);

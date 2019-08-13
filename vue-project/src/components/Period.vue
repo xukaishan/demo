@@ -2,7 +2,10 @@
   <div class="period">
     <div class="nav">
       <div class="navbar" @click="isShow=!isShow">
-        <span class="navtit">{{seleResult||'全部'}}</span>
+        <span class="navtit barItem">{{seleResult||'全部'}}</span>
+        <span class="barItem">
+          <i class="icon"></i>
+        </span>
       </div>
       <div class="content" v-show="isShow">
         <div class="item">
@@ -78,7 +81,7 @@ export default {
       this.style(event, `${item.name}-${v.name}`);
     },
     style(e, text) {
-      (document.querySelectorAll(".spanItem") || []).forEach(itm => {
+      (document.querySelectorAll(".period .spanItem") || []).forEach(itm => {
         itm.style.background = "#fff";
         itm.style.color = "#000";
       });
@@ -96,16 +99,36 @@ export default {
     width: 200px;
     font-size: 14px;
     .navbar {
+      border-radius: 6px 6px 0 0;
       text-align: center;
       background: #2ed095;
+      cursor: pointer;
+      display: flex;
+      height: 34px;
+      .barItem {
+        display: inline-block;
+        width: 50%;
+        text-align: left;
+        padding-right: 5px;
+      }
       .navtit {
-        line-height: 40px;
+        line-height: 34px;
         color: #fff;
+        text-align: right;
+      }
+      .icon {
+        display: inline-block;
+        height: 34px;
+        width: 34px;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAOCAYAAADJ7fe0AAAANElEQVQokWP8////fwYKAROlBjAwMDCwMDAwMFJsSGNjI8UuYaRCkFAvTEZjBxWMxg4mAACzUQ8i/7d+cgAAAABJRU5ErkJggg==);
       }
     }
     .content {
       padding: 10px;
       border: 1px solid #2ed095;
+      border-top: none;
       .item {
         border-bottom: 1px solid #2ed095;
         padding: 10px 0;
