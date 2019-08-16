@@ -221,7 +221,6 @@ export default {
       }
     }
   }
-
   .notShowAll {
     height: 28px;
     overflow: hidden;

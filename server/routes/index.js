@@ -86,6 +86,7 @@ router.post('/api/question/excel/upload', async (ctx, next) => {
 })
 
 router.post('/api/submit', async (ctx, next) => {
+  ctx.set('Content-Type', 'application/json')
   console.log(ctx.request.body)
   ctx.body = { errcode: 0, errmsg: 'ok' };
 
