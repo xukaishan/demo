@@ -25,11 +25,11 @@
 </template>
 
 <script>
-// import RowItem from "@/components/RowItem.vue";
+import RowItem from "@/components/RowItem.vue";
 export default {
-  // components: {
-  //   RowItem
-  // },
+  components: {
+    RowItem
+  },
   data() {
     return {
       value: "",
