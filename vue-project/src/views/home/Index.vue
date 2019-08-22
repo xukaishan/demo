@@ -1,14 +1,15 @@
 <template>
   <div class="home">
     <Menu :list="list"></Menu>
-    <button @click="btnFn" ref='btn'>更新</button>
-    <Nav :navArr='navArr' @navChange='navChange'/>
+    <button @click="btnFn" ref="btn">更新</button>
+    <Nav :navArr="navArr" @navChange="navChange"/>
   </div>
 </template>
 
 <script>
 import Menu from "@/components/Menu.vue";
 import Nav from "@/components/Period.vue";
+
 export default {
   components: {
     Menu,
@@ -17,20 +18,20 @@ export default {
   data() {
     return {
       list: this.$store.getters["get_menuitems"],
-      updateList:[
+      updateList: [
         {
-            index: "02",
-            label: "一级菜单02",
-            children: [
-                {
-                    index: "020201",
-                    label: "二级菜单01"
-                },
-                {
-                    index: "020202",
-                    label: "二级菜单02"
-                }
-            ]
+          index: "02",
+          label: "一级菜单02",
+          children: [
+            {
+              index: "020201",
+              label: "二级菜单01"
+            },
+            {
+              index: "020202",
+              label: "二级菜单02"
+            }
+          ]
         }
       ],
       navArr: [
@@ -78,7 +79,7 @@ export default {
             }
           ]
         }
-      ],
+      ]
     };
   },
   computed: {
@@ -91,12 +92,12 @@ export default {
       immediate: true,
       deep: true,
       handler(val) {
-        this.list = val
+        this.list = val;
       }
     }
   },
   mounted() {
-     console.log(this.$el);
+    console.log(this.$el);
   },
   methods: {
     /* 递归换键名 */
@@ -113,11 +114,10 @@ export default {
       });
     },
     btnFn() {
-    
-      this.$store.dispatch('ac_update_menu',this.updateList)
+      this.$store.dispatch("ac_update_menu", this.updateList);
     },
-    navChange(data){
-      console.log(data)
+    navChange(data) {
+      console.log(data);
     }
   }
 };

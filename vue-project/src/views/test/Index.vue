@@ -86,8 +86,8 @@ export default {
 <style scoped lang='less'>
 #BMap1,
 #BMap2 {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100vh;
   margin: 100px auto;
 }
 </style>

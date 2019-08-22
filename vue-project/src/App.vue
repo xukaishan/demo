@@ -75,7 +75,7 @@ export default {
   }
   .mid-content{
     height: 90vh;
-    overflow-y: scroll;
+    // overflow-y: scroll;
   }
  
 }
