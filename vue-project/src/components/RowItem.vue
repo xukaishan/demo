@@ -81,7 +81,8 @@ export default {
       },
       showMore: true,
       notShowAll: true,
-      dateData: []
+      dateData: [],
+      dateDataInit: true
     };
   },
   watch: {
@@ -96,7 +97,9 @@ export default {
     dateData: {
       deep: true,
       handler(val) {
-        this.$emit("rowItemDateChange", this.dateData);
+        if (!this.dateDataInit) {
+          this.$emit("rowItemDateChange", this.dateData);
+        }
       }
     }
   },
@@ -127,6 +130,9 @@ export default {
         this.dateData = this.dateData || [];
         this.dateData.splice(0, 1, this.computeDate(parseInt(item.id)));
         this.dateData.splice(1, 1, this.computeDate(0));
+        this.$nextTick(()=>{
+          this.dateDataInit = false;
+        })
       }
       this.params = item;
       this.style();
@@ -154,7 +160,7 @@ export default {
         .querySelectorAll(
           `.${this.rowItem.classId || this.rowItem.class} .activeFirst`
         )[0]
-        .click();
+        .click();    
     },
     //获取指定时间
     computeDate(n) {

@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "debug": "^4.1.1",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
@@ -21,7 +22,8 @@
     "koa-views": "^6.2.0",
     "koa2-cors": "^2.0.6",
     "node-xlsx": "^0.15.0",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "koa-static": "^5.0.0",

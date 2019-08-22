@@ -1,13 +1,17 @@
 <template>
   <div>
+   
+    
+   
     <br />
+   
     <RowItem :rowItem="rowItem0" @rowItemDateChange="rowItemSelectChange0" />
     <br />
     <RowItem :rowItem="rowItem01" @rowItemDateChange="rowItemSelectChange01" />
    
-    <br />
-    <RowItem :rowItem="rowItem1" @rowItemSelectChange="rowItemSelectChange1" />
-    <br />
+    <br /> 
+    <RowItem :rowItem="rowItem1" @rowItemSelectChange="rowItemSelectChange1" /> 
+    <br /> 
     <RowItem :rowItem="rowItem2" @rowItemSelectChange="rowItemSelectChange2">
       <div slot="con_slot">
         <i-input v-model="value" placeholder="请输入..." style="width: 300px"></i-input>
@@ -21,15 +25,17 @@
         <i-button @click="resviewHandlerClick">查询</i-button>
       </template>
     </RowItem>
+  
   </div>
 </template>
 
 <script>
-// import RowItem from "@/components/RowItem.vue";
+import RowItem from "@/components/RowItem.vue";
+import { setTimeout } from 'timers';
 export default {
-  // components: {
-  //   RowItem
-  // },
+  components: {
+    RowItem
+  },
   data() {
     return {
       value: "",
@@ -56,20 +62,7 @@ export default {
       rowItem1: {
         tit: "年级",
         class: "grade",
-        list: [
-          { id: "12345", name: "一年级" },
-          { id: "12344", name: "二年级" },
-          { id: "12343", name: "三年级" },
-          { id: "12342", name: "四年级" },
-          { id: "12341", name: "五年级" },
-          { id: "12340", name: "六年级" },
-          { id: "123401", name: "七年级" },
-          { id: "123402", name: "八年级" },
-          { id: "113403", name: "九年级" },
-          { id: "124401", name: "高一" },
-          { id: "127402", name: "高二" },
-          { id: "128403", name: "高三" }
-        ]
+        list: []
       },
       rowItem2: {
         tit: "学期",
@@ -85,6 +78,24 @@ export default {
         class: "resview"
       }
     };
+  },
+  mounted(){
+    setTimeout(()=>{
+      this.rowItem1.list=[
+          { id: "12345", name: "一年级" },
+          { id: "12344", name: "二年级" },
+          { id: "12343", name: "三年级" },
+          { id: "12342", name: "四年级" },
+          { id: "12341", name: "五年级" },
+          { id: "12340", name: "六年级" },
+          { id: "123401", name: "七年级" },
+          { id: "123402", name: "八年级" },
+          { id: "113403", name: "九年级" },
+          { id: "124401", name: "高一" },
+          { id: "127402", name: "高二" },
+          { id: "128403", name: "高三" }
+        ]
+    },3000)
   },
   methods: {
     resviewHandlerClick() {

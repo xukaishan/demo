@@ -3,6 +3,29 @@
     <UpLoad></UpLoad>
     <div id="BMap1"></div>
     <div id="BMap2"></div>
+    <div class="resultContent">
+        <ul>
+            <li data-name="r-result" class="active">
+
+                <p>公交<img src="images/pre_bus.png" alt="" style="width: 1.3em;left: 27%;top: 32%;"></p>
+                <div class="line"></div>
+            </li>
+            <li data-name="r-result2">
+                <img src="images/nor_car.png" alt="" style="width: 1.5em;left: 24%;top: 34%;">
+                <p>驾车</p>
+                <div class="line"></div>
+            </li>
+            <li data-name="r-result3" style="width: 33.4%">
+                <img src="images/nor_walk.png" alt="" style="width: 0.8em;left: 30%;top: 33%;">
+                <p>步行</p>
+            </li>
+        </ul>
+        <div class="resultContentBlock">
+            <div id="r-result" style="width: 100%;height:auto;display:none"></div>
+            <div id="r-result2" style="width: 100%;height: auto;"></div>
+            <div id="r-result3" style="width: 100%;height: auto;display:none"></div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -10,7 +33,14 @@
 import UpLoad from "@/components/UpLoad.vue";
 export default {
   data() {
-    return {};
+    return {
+      pos: {
+        currentLng: "",
+        currentLat: "",
+        proName: "",
+        cityName: ""
+      }
+    };
   },
   components: {
     UpLoad
@@ -43,7 +73,7 @@ export default {
     },
     initMap2() {
       var map = new BMap.Map("BMap2");
-      var point = new BMap.Point(116.331398, 39.897445);
+      var point = new BMap.Point(116.331398, 31.897445);
       map.centerAndZoom(point, 12);
 
       var geolocation = new BMap.Geolocation();
@@ -51,12 +81,37 @@ export default {
       geolocation.enableSDKLocation();
       geolocation.getCurrentPosition(function(r) {
         if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-           var pointA = new BMap.Point(104.07439642533944, 30.605971996435892); 
+          this.pos = {
+            currentLng: r.point.lng,
+            currentLat: r.point.lat,
+            proName: r.address.province,
+            cityName: r.address.city
+          };
+          var opts = { type: BMAP_NAVIGATION_CONTROL_SMALL }; //放大缩小
+          var pointA = new BMap.Point(r.point.lng, r.point.lat);
           var mk = new BMap.Marker(pointA);
           map.addOverlay(mk);
           map.panTo(pointA);
+          //公交路线
+          var transit = new BMap.TransitRoute(map, {
+            renderOptions: { map: map, panel: "r-result" }
+          });
+          transit.search(pointA, point);
+          //驾车路线
+          var driving = new BMap.DrivingRoute(map, {
+            renderOptions: { map: map, panel: "r-result2", autoViewport: true }
+          });
+          driving.search(pointA, point);
+          //步行路线
+          var walking = new BMap.WalkingRoute(map, {
+            renderOptions: { map: map, panel: "r-result3", autoViewport: true }
+          });
+          walking.search(pointA, point);
+          //可缩放功能
+          map.addControl(new BMap.NavigationControl(opts));
           console.log("您的位置：" + r.point.lng + "," + r.point.lat);
-          
+          console.log(r, this.pos);
+
           // var translateCallback = function(data) {
           //   if (data.status === 0) {
           //     var marker = new BMap.Marker(data.points[0]);
