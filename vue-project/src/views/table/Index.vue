@@ -31,7 +31,10 @@
 
 <script>
 import RowItem from "@/components/RowItem.vue";
+<<<<<<< HEAD
 import { setTimeout } from 'timers';
+=======
+>>>>>>> 0148fb683be81a1387b523531589902e851b3e17
 export default {
   components: {
     RowItem
