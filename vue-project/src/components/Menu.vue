@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$root)
+    // console.log(this.$root)
   },
   methods: {
     labelHandler(i, v) {

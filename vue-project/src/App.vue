@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Layout>
+        <Nav/>
       <!-- <Sider hide-trigger>
         <Menu
           active-key="1-1"
@@ -18,23 +19,29 @@
           </Submenu>
         </Menu>
       </Sider> -->
-      <Layout>
+      <!-- <Layout> -->
         <!-- <Header>
           <div class="avater">
             <img src="http://localhost:3000/upload/avater.jpeg" alt="" width="100%">
           </div>
         </Header> -->
-        <Content>
+        <!-- <Content> -->
           <div class="mid-content"><router-view /></div>
-        </Content>
-      </Layout>
+        <!-- </Content> -->
+      <!-- </Layout> -->
     </Layout>
   </div>
 </template>
 
 <script>
+import Nav from '@/components/Nav'
+
 export default {
   name: "App",
+
+  components:{
+      Nav
+  },
   data() {
     return {
       navData: []

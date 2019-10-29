@@ -1,13 +1,12 @@
 <template>
   <div>
-   
-    
-   
-    <br />
-   
-    <RowItem :rowItem="rowItem0" @rowItemDateChange="rowItemSelectChange0" />
+    <RowItem :rowItem="rowItem0" @rowItemDateChange="rowItemSelectChange0" :fn='fn'/>
     <br />
     <RowItem :rowItem="rowItem01" @rowItemDateChange="rowItemSelectChange01" />
+<br /><br />1111
+     <yxpSelector :rowItem="rowItem0" @rowItemDateChange="rowItemSelectChange0" />
+<br />
+    <yxpSelector :rowItem="rowItem01" @rowItemDateChange="rowItemSelectChange01" />
    
     <br /> 
     <RowItem :rowItem="rowItem1" @rowItemSelectChange="rowItemSelectChange1" /> 
@@ -31,21 +30,20 @@
 
 <script>
 import RowItem from "@/components/RowItem.vue";
-<<<<<<< HEAD
-import { setTimeout } from 'timers';
-=======
->>>>>>> 0148fb683be81a1387b523531589902e851b3e17
+import yxpSelector from "yxp_selector";
+import Emitter from '@/mixins/emitter.js'
 export default {
   components: {
-    RowItem
+    RowItem,
+    yxpSelector
   },
+   mixins: [Emitter],
   data() {
     return {
       value: "",
       rowItem0: {
         tit: "日期",
         class: "date",
-        classId:'date1',
         list: [
           { id: "7", name: "最近7天" },
           { id: "30", name: "最近30天" },
@@ -55,7 +53,6 @@ export default {
       rowItem01: {
         tit: "日期",
         class: "date",
-        classId:'date2',
         list: [
           { id: "7", name: "最近7天" },
           { id: "30", name: "最近30天" },
@@ -106,6 +103,7 @@ export default {
     },
     rowItemSelectChange0(val) {
       console.log(val);
+      this.broadcast('RowItem','RowItemTest','RowItemTestdata')
     },
     rowItemSelectChange01(val) {
       console.log(val);
@@ -115,7 +113,10 @@ export default {
     },
     rowItemSelectChange2(val) {
       console.log(val);
-    }
+    },
+    fn(fn){
+            console.log('fn=>',fn);
+        }
   }
 };
 </script>

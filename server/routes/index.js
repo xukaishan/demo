@@ -65,7 +65,8 @@ router.get('/api/getExcelData', async (ctx, next) => {
   })
 })
 router.post('/api/question/excel/upload', async (ctx, next) => {
-  const file = ctx.request.files.file;   // 获取上传文件
+  /* const file = ctx.request.files.file;   // 获取上传文件 */
+  const file = ctx.request.files.fileDatas;   // 获取上传文件
   const reader = fs.createReadStream(file.path);  // 创建可读流
   const filePath = path.join(__dirname, '../', '/static/upload/');
   // 组装成绝对路径
@@ -151,8 +152,6 @@ router.get('/api/question/analysis/getQuestion', async (ctx, next) => {
       "questionId": 2
     }
   }
-    ;
-
 })
 
 

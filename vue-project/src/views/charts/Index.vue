@@ -1,6 +1,6 @@
 <template>
   <div class="charts">
-    <MyButton @btnClick="btnClick">excel</MyButton>
+    <MyButton @btnClick="btnClick" :on-handler='onHandler'>excel</MyButton>
     <div class="content">
       <table class="mytable">
         <thead class="mythead">
@@ -42,6 +42,9 @@ export default {
         console.log(res);
           this.tableData = res[0].data
       });
+    },
+    onHandler(val){
+        console.log('val=>',val);
     }
   }
 };

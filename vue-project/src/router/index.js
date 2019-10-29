@@ -13,8 +13,23 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Test',
-      component: () => import('@/views/test')
+      name: 'Home',
+      component: () => import('@/views/home/Index')
+    },
+    {
+      path: '/index1',
+      name: 'Index',
+      component: () => import('@/views/home/Index1')
+    },
+    {
+      path: '/index2',
+      name: 'Index',
+      component: () => import('@/views/home/Index2')
+    },
+    {
+      path: '/idx',
+      name: 'idx',
+      component: () => import('@/views/home/idx')
     },
     {
       path: '/Test',
@@ -34,7 +49,12 @@ export default new Router({
     {
       path: '/Ueditor',
       name: 'Ueditor',
-      component: () => import('@/views/Ueditor')
+      component: () => import('@/views/ueditor/Index')
+    },
+    {
+      path: '/UeditorBase',
+      name: 'UeditorBase',
+      component: () => import('@/views/ueditor/UeditorBase')
     }
   ]
 })

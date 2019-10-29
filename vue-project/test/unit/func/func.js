@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: xuks
  * @Date: 2019-07-19 14:32:03
- * @LastEditTime: 2019-08-20 12:28:53
+ * @LastEditTime: 2019-09-06 15:48:58
  */
 export const msg = (message) => {
     let myMsg = document.createElement('div');
@@ -46,3 +46,16 @@ export const debounce = (func, delay, immediate) => {
         }
     }
 }
+/* 递归 */
+function cpt_menu(arr) {
+    return arr.map(itm => {
+      return (
+        (itm.children &&
+          itm.children.length && {
+            id: itm.index,
+            tit: itm.label,
+            children: cpt_menu(itm.children)
+          }) || { id: itm.index, tit: itm.label }
+      );
+    });
+  }

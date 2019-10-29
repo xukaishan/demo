@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0ba87e"],{3836:function(a,e,t){"use strict";t.r(e);var s=t("c832"),n=t("4397");e["default"]={name:"ParentBase",mixins:[s["default"]],created(){this.setData()},methods:{setData(){this.initData=n["a"]["grade"+JSON.parse(localStorage.getItem("gradeInfo")).id]["1"]}}}}}]);
+//# sourceMappingURL=chunk-2d0ba87e.a1a98867.js.map

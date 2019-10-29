@@ -1,5 +1,5 @@
 <template>
-  <div class="rowItem" :class="(rowItem.classId||rowItem.class)">
+  <div class="rowItem" :class="rowItem.class">
     <div class="tit">{{rowItem.tit}}</div>
     <!-- 全部 -->
     <div
@@ -54,143 +54,153 @@
 </template>
 <script>
 export default {
-  name: "RowItem",
-  props: {
-    rowItem: {
-      type: Object,
-      default() {
-        return {
-          tit: "",
-          class: "", //类型,为date时为日期选择组件，可以作为类名
-          classId: "", //绑定的类名,包含多个相同类型此项不能为空
-          list: [
-            {
-              id: "",
-              name: ""
+    name: "RowItem",
+    componentName: 'RowItem',
+    props: {
+        rowItem: {
+            type: Object,
+            default() {
+                return {
+                    tit: "",
+                    class: "", //类型,为date时为日期选择组件，可以作为类名
+                    list: [
+                        {
+                            id: "",
+                            name: ""
+                        }
+                    ]
+                };
             }
-          ]
+        },
+        fn:Function
+
+    },
+    data() {
+        return {
+            params: {
+                id: "",
+                name: ""
+            },
+            showMore: true,
+            notShowAll: true,
+            dateData: [],
+            dateDataInit: true
         };
-      }
-    }
-  },
-  data() {
-    return {
-      params: {
-        id: "",
-        name: ""
-      },
-      showMore: true,
-      notShowAll: true,
-      dateData: [],
-      dateDataInit: true
-    };
-  },
-  watch: {
-    params: {
-      deep: true,
-      handler(val) {
-        if (this.rowItem.class !== "date") {
-          this.$emit("rowItemSelectChange", this.params);
+    },
+    watch: {
+        params: {
+            deep: true,
+            handler(val) {
+                if (this.rowItem.class !== "date") {
+                    this.$emit("rowItemSelectChange", this.params);
+                }
+            }
+        },
+        dateData: {
+            deep: true,
+            handler(val) {
+                if (!this.dateDataInit) {
+                    this.$emit("rowItemDateChange", this.dateData);
+                    this.fn('fn执行')
+                }
+            }
         }
-      }
     },
-    dateData: {
-      deep: true,
-      handler(val) {
-        if (!this.dateDataInit) {
-          this.$emit("rowItemDateChange", this.dateData);
+    computed: {},
+    created() {
+        this.$on('RowItemTest',this.RowItemTestFn)
+    },
+    mounted() {
+        console.log('this.$el=>', this.$el);
+        if (this.rowItem.class === "date") {
+            this.initDatePicker();
         }
-      }
-    }
-  },
-  computed: {},
-  mounted() {
-    if (this.rowItem.class === "date") {
-      this.initDatePicker();
-    }
-    this.isShowLookMore();
-    window.addEventListener("resize", this.isShowLookMore);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.isShowLookMore);
-  },
-  methods: {
-    isShowLookMore() {
-      this.showMore =
-        this.$refs.ulel && this.$refs.ulel.getBoundingClientRect().height > 38;
+        this.isShowLookMore();
+        window.addEventListener("resize", this.isShowLookMore);
     },
-    allHandlerClick() {
-      if (!this.params.id || !this.params.name) return;
-      this.params = {};
-      this.style();
+    beforeDestroy() {
+        window.removeEventListener("resize", this.isShowLookMore);
     },
-    itemHandlerClick(item) {
-      if (this.params.id === item.id && this.params.name === item.name) return;
-      if (this.rowItem.class === "date") {
-        this.dateData = this.dateData || [];
-        this.dateData.splice(0, 1, this.computeDate(parseInt(item.id)));
-        this.dateData.splice(1, 1, this.computeDate(0));
-        this.$nextTick(()=>{
-          this.dateDataInit = false;
-        })
-      }
-      this.params = item;
-      this.style();
-    },
-    style() {
-      (
-        document.querySelectorAll(
-          `.${this.rowItem.classId || this.rowItem.class} .itm`
-        ) || []
-      ).forEach(itm => {
-        itm.classList.remove("active");
-      });
-      if (event) event.currentTarget.classList.add("active");
-    },
-    datePickerChange(val) {
-      this.params = {};
-      this.style();
-      if (!val) {
-        this.initDatePicker();
-      }
-      // this.$emit("rowItemSelectChange", this.dateData);
-    },
-    initDatePicker() {
-      document
-        .querySelectorAll(
-          `.${this.rowItem.classId || this.rowItem.class} .activeFirst`
-        )[0]
-        .click();    
-    },
-    //获取指定时间
-    computeDate(n) {
-      var s;
-      var n = n;
-      var d = new Date();
-      var year = d.getFullYear();
-      var mon = d.getMonth() + 1;
-      var day = d.getDate();
-      if (day <= n) {
-        if (mon > 1) {
-          mon = mon - 1;
-        } else {
-          year = year - 1;
-          mon = 12;
+    methods: {
+        RowItemTestFn(val){
+            console.log('RowItemTest=>',val);
+        },
+        isShowLookMore() {
+            this.showMore =
+                this.$refs.ulel && this.$refs.ulel.getBoundingClientRect().height > 38;
+        },
+        allHandlerClick() {
+            if (!this.params.id || !this.params.name) return;
+            this.params = {};
+            this.style();
+        },
+        itemHandlerClick(item) {
+            if (this.params.id === item.id && this.params.name === item.name) return;
+            if (this.rowItem.class === "date") {
+                this.dateData = this.dateData || [];
+                this.dateData.splice(0, 1, this.computeDate(parseInt(item.id)));
+                this.dateData.splice(1, 1, this.computeDate(0));
+                this.$nextTick(() => {
+                    this.dateDataInit = false;
+                });
+            }
+            this.params = item;
+            this.style();
+        },
+        style() {
+            (
+                this.$el.querySelectorAll(
+                    `.${this.rowItem.class} .itm`
+                ) || []
+            ).forEach(itm => {
+                itm.classList.remove("active");
+            });
+            if (event) event.currentTarget.classList.add("active");
+        },
+        datePickerChange(val) {
+            this.params = {};
+            this.style();
+            if (!val) {
+                this.initDatePicker();
+            }
+            // this.$emit("rowItemSelectChange", this.dateData);
+        },
+        initDatePicker() {
+            this.$el
+                .querySelectorAll(
+                    `.${this.rowItem.class} .activeFirst`
+                )[0]
+                .click();
+        },
+        //获取指定时间
+        computeDate(n) {
+            var s;
+            var n = n;
+            var d = new Date();
+            var year = d.getFullYear();
+            var mon = d.getMonth() + 1;
+            var day = d.getDate();
+            if (day <= n) {
+                if (mon > 1) {
+                    mon = mon - 1;
+                } else {
+                    year = year - 1;
+                    mon = 12;
+                }
+            }
+            d.setDate(d.getDate() - n);
+            year = d.getFullYear();
+            mon = d.getMonth() + 1;
+            day = d.getDate();
+            s =
+                year +
+                "-" +
+                (mon < 10 ? "0" + mon : mon) +
+                "-" +
+                (day < 10 ? "0" + day : day);
+            return s;
         }
-      }
-      d.setDate(d.getDate() - n);
-      year = d.getFullYear();
-      mon = d.getMonth() + 1;
-      day = d.getDate();
-      s =
-        year +
-        "-" +
-        (mon < 10 ? "0" + mon : mon) +
-        "-" +
-        (day < 10 ? "0" + day : day);
-      return s;
     }
-  }
 };
 </script>
 <style lang="less">
