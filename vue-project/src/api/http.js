@@ -3,34 +3,30 @@ import axios from 'axios'
 import qs from 'qs'
 
 Vue.prototype.$axios = axios;
-
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 // request 拦截器
 axios.interceptors.request.use(
     config => {
-        config.baseURL = 'http://localhost:3000/api'
-        config.baseURL = 'https://web-api.juejin.im/query'
-        // config.baseURL = 'http://api-dev.anoah.com:29000/api/textbook'
-        // config.withCredentials = true // 允许携带token ,这个是解决跨域产生的相关问题
-        config.timeout = 6000
-        let token = localStorage.getItem('access_token') || 'eyJhY2Nlc3NfdG9rZW4iOiI2MjFWVVB0OTZTNlh3WmZVIiwicmVmcmVzaF90b2tlbiI6IjZUNmxiQzloY2tpRVhLRnMiLCJ0b2tlbl90eXBlIjoibWFjIiwiZXhwaXJlX2luIjoyNTkyMDAwfQ=='
 
+        Object.assign(config, {
+            baseURL: 'http://localhost:3000',
+            timeout: 15000,
+        })
+
+        let token = localStorage.getItem('access_token') || 'eyJhY2Nlc3NfdG9rZW4iOiI2MjFWVVB0OTZTNlh3WmZVIiwicmVmcmVzaF90b2tlbiI6IjZUNmxiQzloY2tpRVhLRnMiLCJ0b2tlbl90eXBlIjoibWFjIiwiZXhwaXJlX2luIjoyNTkyMDAwfQ=='
         if (token) {
-            config.headers = {
-                'X-Legacy-Token': token,
-                'Content-Type': 'application/json',
-                'X-Agent': 'Juejin/Web'
-            }
+            Object.assign(config, {
+                token
+            })
         }
+
+        console.log('config=>', config);
+
         const encodeForm = data => Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
         let url = config.url
         // get参数编码
         if (config.method === 'get' && config.params) {
-            url += '?'
-            let keys = Object.keys(config.params)
-            for (let key of keys) {
-                url += `${key}=${encodeURIComponent(config.params[key])}&`
-            }
-            url = url.substring(0, url.length - 1)
+            url = '?' + encodeForm(config.params)
             config.params = {}
         }
         config.url = url
@@ -103,11 +99,11 @@ axios.interceptors.response.use(
 * @returns {Promise}
 */
 
-export function get(url, params = {}) {
-    
+export function get ({ url = '', data }) {
+
     return new Promise((resolve, reject) => {
         axios.get(url, {
-            params: params
+            params: data
         })
             .then(response => {
                 resolve(response.data);
@@ -129,7 +125,7 @@ export function get(url, params = {}) {
  *约定为纯JSON格式入参 Content-Type=application/json。后台就要使用@RequestBody注解，接收的入参可以是一个固定格式的bean，也可以是一个Map。同时前台直接使用axios.post即可，不再需要使用QS序列化。
  */
 
-export function post(url = '', data = {}, options = {}) {
+export function post ({ url = '', options = {}, data }) {
     let contentType = options.headers && options.headers['Content-Type'] || axios.defaults.headers['Content-Type'];
     let send = {
         method: 'post',
@@ -138,18 +134,14 @@ export function post(url = '', data = {}, options = {}) {
         responseType: options.responseType || 'json',
     };
     if (data && /form/.test(contentType)) {
-        data = '?' + qs.stringify(data);
-        send = Object.assign(send, {
-            url: url + data
-        })
-    } else {
-        send = Object.assign(send, {
-            data
-        })
+        data = qs.stringify(data);
     }
-
-    console.log('options=>', options);
+    send = Object.assign(send, {
+        data
+    })
     console.log('send=>', send);
+
+
     return new Promise((resolve, reject) => {
         axios(send)
             .then(response => {

@@ -7,12 +7,17 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      name: 'examples',
+      component: () => import('@/api/examples')
+    },
+    {
       path: '/UpLoad',
       name: 'UpLoad',
       component: () => import('@/components/UpLoad')
     },
     {
-      path: '/',
+      path: '/Home',
       name: 'Home',
       component: () => import('@/views/home/Index')
     },

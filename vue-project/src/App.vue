@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Layout>
-        <Nav/>
+        <!-- <Nav/> -->
       <!-- <Sider hide-trigger>
         <Menu
           active-key="1-1"
@@ -55,9 +55,9 @@ export default {
       this.$router.push(name)
     },
     getNav(){
-      this.$get('/getNavData').then(res=>{
-        this.navData = res.data
-      })
+    //   this.$get('/getNavData').then(res=>{
+    //     this.navData = res.data
+    //   })
     }
   }
 };
