@@ -4,6 +4,7 @@ import Vue from 'vue'
 import store from '@/store'
 import App from './App'
 import router from './router'
+import Directives from '@/directives';
 import {get,post} from './api/http'
 import qs from 'qs'
 import iView from 'iview';
@@ -16,6 +17,7 @@ import 'iview/dist/styles/iview.css';
 
 Vue.use(iView);
 Vue.use(ElementUI);
+Vue.use(Directives);
 
 
 

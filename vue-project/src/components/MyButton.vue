@@ -20,6 +20,10 @@ export default {
       default() {
         return {};
       }
+    },
+    onHandler:{
+        type: Function,
+        default: () => {},
     }
   },
   data() {
@@ -63,7 +67,9 @@ export default {
       btn.style.background = background;
     },
     handleClick(e) {
-      this.$emit("btnClick");
+      this.$emit("btnClick",'123');
+      this.onHandler("btnClick");
+      
     }
   }
 };
