@@ -10,13 +10,15 @@ axios.interceptors.request.use(
 
         Object.assign(config, {
             baseURL: 'http://localhost:3000',
+            // baseURL: 'http://res455dev.anoah.com',
             timeout: 15000,
         })
 
-        let token = localStorage.getItem('access_token') || 'eyJhY2Nlc3NfdG9rZW4iOiI2MjFWVVB0OTZTNlh3WmZVIiwicmVmcmVzaF90b2tlbiI6IjZUNmxiQzloY2tpRVhLRnMiLCJ0b2tlbl90eXBlIjoibWFjIiwiZXhwaXJlX2luIjoyNTkyMDAwfQ=='
+        let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzQ3MzgxNTEsInVzZXJJZCI6MTAyODI4M30.X12JNCls8QcpqBDO-JaBq-jezIvjvQgxvi7wVE5l8mY';
         if (token) {
-            Object.assign(config, {
-                token
+            Object.assign(config.headers, {
+                authorization:token,
+                // orgId:1,
             })
         }
 
@@ -26,7 +28,7 @@ axios.interceptors.request.use(
         let url = config.url
         // get参数编码
         if (config.method === 'get' && config.params) {
-            url = '?' + encodeForm(config.params)
+            url = url + '?' + encodeForm(config.params)
             config.params = {}
         }
         config.url = url
@@ -99,16 +101,19 @@ axios.interceptors.response.use(
 * @returns {Promise}
 */
 
-export function get ({ url = '', data }) {
-
+export function get ({ url = '', options = {}, data }) {
     return new Promise((resolve, reject) => {
-        axios.get(url, {
-            params: data
-        })
+        let send = {
+            method: 'get',
+            url,
+            params:data,
+            headers: options.headers || axios.defaults.headers,
+            responseType: options.responseType || 'json',
+        };
+        axios(send)
             .then(response => {
                 resolve(response.data);
-            })
-            .catch(err => {
+            }, err => {
                 reject(err)
             })
     })
@@ -139,8 +144,7 @@ export function post ({ url = '', options = {}, data }) {
     send = Object.assign(send, {
         data
     })
-    console.log('send=>', send);
-
+    console.log('options=>', options);
 
     return new Promise((resolve, reject) => {
         axios(send)

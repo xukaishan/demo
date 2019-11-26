@@ -227,6 +227,13 @@ router.post('/api/list/updateUser', async (ctx, next) => {
     ctx.body = { errcode: 0, errmsg: 'ok', data: ctx.request.body };
 
 })
+/* api测试 */
+router.post('/api/list/updateId', async (ctx, next) => {
+    ctx.set('Content-Type', 'application/json')
+    console.log('post====>',ctx.request.body)
+    ctx.body = { errcode: 0, errmsg: 'ok', data: ctx.request.body };
+
+})
 
 
 
