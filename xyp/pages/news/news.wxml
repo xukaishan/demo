@@ -1,0 +1,13 @@
+<view class='news'>
+  <view class='newsList' wx:for="{{num}}" >
+    <view class='userName'>
+    <image src='../../images/head-img.png'></image>
+    <view class='remind'></view>
+      <view>小葡萄</view>
+      <text>05月22日 10:04</text>
+    </view>
+    <view class='cont'>
+      最近有优惠券吗？小张
+    </view>
+  </view>
+</view>

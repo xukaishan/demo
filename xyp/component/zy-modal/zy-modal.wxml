@@ -1,0 +1,19 @@
+<!-- component/zy-modal/zy-modal.wxml -->
+<view class="modal" hidden="{{hidden}}" bindtap='cancel'>
+    <view class="container" hidden="{{hidden}}">
+        <view class="title">{{title}}</view>
+         
+        <view class="content">
+            <slot></slot>
+        </view>
+         <!-- <image src="https://api.test.gviiii.com//admin/file/img/0830180648861-d77ccadd43364c4c97c324ab2155405f.jpg"></image> -->
+         <image class="alterPic" src="{{alterPic}}"></image>
+         <image class="deleteIcon" src="{{deleteIcon}}" bindtap='cancel' ></image>
+
+        <view class='modal-btn-wrapper'>
+            <!-- <view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='cancel'>{{cancelText}}</view> -->
+            <!-- <view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view> -->
+            <button class="confirm-btn" bindtap='reply' open-type="contact">立即回复</button>
+        </view>
+    </view>
+</view>

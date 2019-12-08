@@ -1,0 +1,80 @@
+<view class="{{shouldShowDropMenu?'b-box1':'b-box'}}">
+  <view class='search'>
+    <view class='inp'>
+      <image src='/images/search-icon.png'></image>
+      <input bindinput='search' placeholder='输入产品关键词或编号'></input>
+    </view>
+  </view>
+
+  <!-- 一级渲染 -->
+  <scroll-view scroll-x class='b_down scroll-x'>
+
+    <view class="{{shouldNavigationBarScroll ? 'drop-menu-nav-scroll' : 'drop-menu-nav-space-around' }}">
+      <view class="option" wx:for="{{categoriesLevel_1}}" wx:key="filteredCategoryNames" bindtap="clickTabLevel_1" data-item="{{item}}">
+        <view class="{{item.selected ? 'tab-selected' : ''}}"> {{item.filteredCategoryNames}} </view>
+        <image wx:if='{{item.level}}' catchtap="dropMenuArrowClick" data-item="{{item}}" src="{{item.selected ? '/images/bottom-icon1.png' : '/images/bottom-icon.png'}}"></image>
+        <image wx:if='{{shouldShowDropMenu && item.selected}}' class="top-tab" src="/images/top-tab.png"></image>
+      </view>
+    </view>
+
+  </scroll-view>
+
+  <!-- 多级tab二级渲染 -->
+  <view wx:if='{{shouldShowDropMenu}}' class="mutable-drop-menu">
+
+    <scroll-view scroll-y class="tab-f">
+      <view class="showSon2" wx:for='{{categoriesLevel_2}}' wx:key="categoryName">
+        <view class="{{item.selected?'tab-selected2':''}}" bindtap="clickTabLevel_2" data-item="{{item}}">
+          <text> {{item.categoryName}} </text>
+          <icon wx:if="{{item.selected}}" class="icon-rigth"></icon>
+        </view>
+      </view>
+    </scroll-view>
+
+    <scroll-view scroll-y class="tab-r">
+      <!-- <view class="showSon3"> -->
+      <view class="{{item.selected?'tab3Active':''}} showSon3" bindtap="clickTabLevel_3" wx:for='{{categoriesLevel_3}}' wx:key="categoryName" data-item="{{item}}">
+        {{item.categoryName}}
+        <!-- </view> -->
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 二级没有三级 -->
+  <scroll-view scroll-y class="suboptions" wx:if='{{suboptions2}}'>
+    <view class="suboptions2" bindtap="clickTabs2" wx:for='{{slectTab2}}' data-index="{{index}}" data-item="{{item}}">
+      <text class="{{item.data?'suboptionsActive2':''}}">
+      {{item.categoryName}}
+      </text>
+    </view>
+  </scroll-view>
+
+  <view wx:if='{{shouldShowDropMenu}}' class="btns">
+    <view bindtap="reset">重置</view>
+    <view bindtap="suerQuery">确定</view>
+  </view>
+
+  <view wx:if='{{shouldShowDropMenu}}' class="tab-bottom" catchtap="closeTab"></view>
+</view>
+
+<view class='commodity'>
+  <view class='commodityList' wx:for="{{commodityList}}" wx:key="" bindtap='openWeb' data-item="{{item}}">
+
+    <view class="img-modo">
+      <image src='{{imgheadurl+item.suppliesImgUrl}}' mode='aspectFill'></image>
+      <image class="newImg" wx:if='{{item.isNew==1}}' src='/images/New.png'></image>
+      <image class="playImg" wx:if='{{item.suppliesType==1}}' src="/images/play-icon.png"></image>
+    </view>
+
+    <view class='comm-text'>
+      <view> {{item.suppliesName}}</view>
+      <view class='b-comm'>
+        <text>{{item.suppliesDesc}}</text>
+        <image src='/images/rigth-icon.png'></image>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+<view class='down'> {{bottomTxt}} </view>

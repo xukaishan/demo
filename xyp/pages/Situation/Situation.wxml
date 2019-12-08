@@ -1,0 +1,262 @@
+<view class="screen">
+  <view class="screenTime">
+    <picker mode="date" value="{{currentDateStartString}}" bindchange="bindDateChange" data-tag="{{1}}">
+      <view class="picker"> {{currentDateStartString}} </view>
+    </picker>
+    <view class="timeType">
+      <view>当前</view>
+      <image src="../../images/Arrow.png"></image>
+    </view>
+    <picker mode="date" value="{{currentDateEndString}}" bindchange="bindDateChange" data-tag="{{2}}">
+      <view class="picker"> {{currentDateEndString}} </view>
+    </picker>
+  </view>
+
+  <view class="screenTime" wx:if="{{statisticsCondition != 0 && currentAreaInfo.dataType < 3}}">
+    <picker mode="date" value="{{compareDateStartString}}" bindchange="bindDateChange" data-tag="{{3}}">
+      <view class="picker"> {{compareDateStartString}}</view>
+    </picker>
+    <view class="timeType">
+      <view>对比</view>
+      <image src="../../images/Arrow.png"></image>
+    </view>
+    <picker mode="date" value="{{compareDateEndString}}" bindchange="bindDateChange" data-tag="{{4}}">
+      <view class="picker"> {{compareDateEndString}}</view>
+    </picker>
+  </view>
+
+  <view wx:if="{{currentAreaInfo.dataType < 3}}" class="opt_box">
+    <view class="opt">
+      <text bindtap="openForward">{{usageSituationFilteredResult}}</text>
+      <image bindtap="openForward" src="../../images/opt.png"></image>
+      <view wx:if='{{showForward==1}}' class="showArrow"></view>
+      <view class="show_forward" wx:if='{{showForward==1}}'>
+        <view catchtap="fowwardFollowersTap" data-tag="{{0}}">转发情况</view>
+        <view catchtap="fowwardFollowersTap" data-tag="{{1}}">粉丝情况</view>
+      </view>
+    </view>
+
+    <view class="opt">
+      <text bindtap="openStatistics">{{statisticsFilteredResult}}</text>
+      <image bindtap="openStatistics" src="../../images/opt.png"> </image>
+      <view class="showArrow1" wx:if='{{showStatistics==1}}'></view>
+      <view class="show_Statistics" wx:if='{{showStatistics==1}}'>
+        <view catchtap="statisticsTap" data-tag="{{0}}">统计</view>
+        <!-- 预留当有同比数据后开放 -->
+        <!-- <view catchtap="statisticsTap" data-tag="{{1}}">同比</view> -->
+        <view catchtap="statisticsTap" data-tag="{{2}}">环比</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view wx:if="{{usageSituationCondition == 0 && statisticsCondition == 0 && currentAreaInfo.dataType < 3}}" class="header-container">
+    <view>
+      <text class="header-text">区域</text>
+    </view>
+    <view bindtap="sortData" data-option="{{1}}" class="sort">
+      <text class="header-text">区域人均转发</text>
+
+      <view class="sort-image-container">
+        <image class="sort-image-asc" src="{{sortMethods[0]=='desc' ? '../../images/sort_green_down.png' : '../../images/sort_gray_down.png'}}" mode="widthFix"></image>
+        <image class="sort-image-desc" src="{{sortMethods[0] =='desc' ? '../../images/sort_gray_down.png' : '../../images/sort_green_down.png'}}" mode="widthFix"></image>
+      </view>
+
+    </view>
+    <view>
+      <text class="header-text"> 全国人均转发</text>
+    </view>
+    <view bindtap="sortData" data-option="{{2}}" class="sort">
+      <text class="header-text-align-right">总注册账号数 </text>
+      <view class="sort-image-container">
+        <image class="sort-image-asc" src="{{sortMethods[1]=='desc' ? '../../images/sort_green_down.png' : '../../images/sort_gray_down.png'}}" mode="widthFix"></image>
+        <image class="sort-image-desc" src="{{sortMethods[1]=='desc' ? '../../images/sort_gray_down.png' : '../../images/sort_green_down.png'}}" mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{usageSituationCondition == 1 && statisticsCondition == 0 && currentAreaInfo.dataType < 3}}" class="header-container">
+    <view>
+      <text>区域</text>
+    </view>
+    <view bindtap="sortData" data-option="{{3}}" class="sort">
+      <text>新增粉丝</text>
+      <view class="sort-image-container">
+        <image class="sort-image-asc" src="{{sortMethods[2]=='desc' ? '../../images/sort_green_down.png' : '../../images/sort_gray_down.png'}}" mode="widthFix"></image>
+        <image class="sort-image-desc" src="{{sortMethods[2]=='desc' ? '../../images/sort_gray_down.png' : '../../images/sort_green_down.png'}}" mode="widthFix"></image>
+      </view>
+    </view>
+    <view bindtap="sortData" data-option="{{4}}" class="sort">
+      <text>总粉丝</text>
+      <view class="sort-image-container">
+        <image class="sort-image-asc" src="{{sortMethods[3]=='desc' ? '../../images/sort_green_down.png' : '../../images/sort_gray_down.png'}}" mode="widthFix"></image>
+        <image class="sort-image-desc" src="{{sortMethods[3]=='desc' ? '../../images/sort_gray_down.png' : '../../images/sort_green_down.png'}}" mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+
+
+  <view wx:if="{{currentAreaInfo.dataType == 3}}" class="header-container-two-items">
+    <view>链接名称</view>
+    <view>转发数</view>
+  </view>
+
+</view>
+
+
+<!-- 转发情况 -->
+<view wx:if="{{statisticsCondition == 0 && currentAreaInfo.dataType < 3}}" class="content-container">
+  <view wx:if="{{usageSituationCondition == 0}}">
+    <view>
+
+      <view wx:for='{{shareCustomerResData}}' wx:for-index="idx" wx:key="" bindtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+
+        <view wx:if="{{currentAreaInfo.dataType < 3}}" class="{{idx==0 ?'cell-container-total' : 'cell-container'}}">
+          <view>{{item.name}}</view>
+          <view>{{item.areaPerShare}}</view>
+          <view>{{item.nationPerShare}}</view>
+          <view wx:if="{{item.dataType==1}}">{{item.registedGuides}}</view>
+          <view wx:if="{{item.dataType==2}}">{{item.registedGuides}}</view>
+          <image class="cell-disclosure" src="{{(idx==0)? '': '../../images/rigth-icon.png'}}"></image>
+        </view>
+
+        <view wx:if="{{currentAreaInfo.dataType == 3}}" class="{{idx==0 ?'cell-container-two-items-total' : 'cell-container-two-items'}}">
+          <view class="cell-container-two-items-link-name">{{item.name}}</view>
+          <view class="cell-container-two-items-share-count">{{item.shareCount}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{usageSituationCondition == 1}}">
+
+
+    <view wx:if="{{currentAreaInfo.dataType < 3}}">
+
+      <view class="{{idx==0 ?'cell-container-total' : 'cell-container'}}" wx:for='{{shareCustomerResData}}' wx:for-index="idx" wx:key="" bindtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+        <view>{{item.name}}</view>
+        <view>
+          {{item.dataType!=3? item.customers : ''}}
+        </view>
+        <view>
+          {{item.dataType!=3? item.historyCustomers : ''}}
+        </view>
+
+        <image class="cell-disclosure" src="{{idx==0 || item.dataType==2? '': '../../images/rigth-icon.png'}}"></image>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+<view wx:if="{{statisticsCondition != 0 && currentAreaInfo.dataType < 3}}" class="content-container">
+  <!-- //0 转发情况 1 粉丝情况 -->
+  <view wx:if="{{usageSituationCondition == 0}}">
+
+    <view wx:for='{{shareCustomerCompareResData}}' wx:for-index="idx" wx:key=" " bindtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+      <view class="{{idx==0 ?'cell-container-compare-total' : 'cell-container-compare'}}">
+        <view class="cell-container-compare-content">
+          <view class="city ">{{item.preShareCountResult.areaName}}</view>
+          <view class="cell-container-list-header">
+            <view>指标</view>
+            <view>当前值</view>
+            <view>对比值</view>
+            <view>全国</view>
+            <view>{{statisticsFilteredResult}}增长</view>
+          </view>
+
+          <view class="cell-container-list">
+            <view>人均转发数</view>
+            <view>{{item.preShareCountResult.currentValue}}</view>
+            <view>{{item.preShareCountResult.compareValue}}</view>
+            <view>{{item.preShareCountResult.nationAvg}}</view>
+            <view wx:if="{{item.preShareCountResult.riseRates > 0}}" class="increase-rate-positive"> ↑{{item.preShareCountResult.riseRatesStr}} </view>
+            <view wx:if="{{item.preShareCountResult.riseRates == 0}}" class="increase-rate-zero">• {{item.preShareCountResult.riseRatesStr}} </view>
+            <view wx:if="{{item.preShareCountResult.riseRates < 0}}" class="increase-rate-negative">↓{{item.preShareCountResult.riseRatesStr}} </view>
+          </view>
+
+          <view class="cell-container-list ">
+            <view>转发数</view>
+            <view>{{item.shareCountResult.currentValue}}</view>
+            <view>{{item.shareCountResult.compareValue}}</view>
+            <!-- <view>{{item.shareCountResult.nationAvg}}</view> -->
+              <view>/</view>
+            <view wx:if="{{item.shareCountResult.riseRates > 0}}" class="increase-rate-positive"> ↑{{item.shareCountResult.riseRatesStr}} </view>
+            <view wx:if="{{item.shareCountResult.riseRates == 0}}" class="increase-rate-zero">• {{item.shareCountResult.riseRatesStr}} </view>
+            <view wx:if="{{item.shareCountResult.riseRates < 0}}" class="increase-rate-negative"> ↓{{item.shareCountResult.riseRatesStr}} </view>
+
+          </view>
+        </view>
+        <image class="cell-disclosure" src="{{idx==0?'':'../../images/rigth-icon.png'}}"></image>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- //0 转发情况 1 粉丝情况 -->
+  <view wx:if="{{usageSituationCondition == 1}}">
+
+    <view wx:for='{{shareCustomerCompareResData}}' wx:for-index="idx" wx:key=" " bindtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+      <view class="{{idx==0 ?'cell-container-compare-total' : 'cell-container-compare'}}">
+        <view class="cell-container-compare-content">
+          <view class="city">{{item.customersResult.areaName}}</view>
+          <view class="cell-container-list-header ">
+            <view>指标</view>
+            <view>当前值</view>
+            <view>对比值</view>
+            <!-- <view>全国</view> -->
+            <view>{{statisticsFilteredResult}}增长</view>
+          </view>
+
+          <!-- <view class="cell-container-list ">
+            <view>总粉丝</view>
+            <view>{{item.rateCustomersResult.currentValue}}</view>
+            <view>{{item.rateCustomersResult.compareValue}}</view>
+            <view>{{item.rateCustomersResult.nationAvg}}</view>
+            <view wx:if="{{item.rateCustomersResult.riseRates > 0}}" class="increase-rate-positive"> ↑{{item.rateCustomersResult.riseRatesStr}} </view>
+            <view wx:if="{{item.rateCustomersResult.riseRates == 0}}" class="increase-rate-zero">• {{item.rateCustomersResult.riseRatesStr}} </view>
+            <view wx:if="{{item.rateCustomersResult.riseRates < 0}}" class="increase-rate-negative">↓{{item.rateCustomersResult.riseRatesStr}} </view>
+          </view> -->
+
+          <view class="cell-container-list ">
+            <view>新增粉丝</view>
+            <view>{{item.customersResult.currentValue}}</view>
+            <view>{{item.customersResult.compareValue}}</view>
+            <!-- <view>{{item.customersResult.nationAvg}}</view> -->
+            <view wx:if="{{item.customersResult.riseRates > 0}}" class="increase-rate-positive"> ↑{{item.customersResult.riseRatesStr}} </view>
+            <view wx:if="{{item.customersResult.riseRates == 0}}" class="increase-rate-zero">• {{item.customersResult.riseRatesStr}} </view>
+            <view wx:if="{{item.customersResult.riseRates < 0}}" class="increase-rate-negative">↓{{item.customersResult.riseRatesStr}} </view>
+          </view>
+
+        </view>
+        <image class="cell-disclosure" src="{{idx==0?'':'../../images/rigth-icon.png'}}"></image>
+      </view>
+    </view>
+
+  </view>
+
+</view>
+
+<!-- 终端详情 头部 -->
+<view wx:if="{{currentAreaInfo.dataType == 3}}">
+
+  <!-- <view class="header-container-two-items">
+    <view>链接名称</view>
+    <view>转发数</view>
+  </view> -->
+
+  <!--  终端详情 内容 -->
+  <view class="terminal-content-container">
+    <view wx:for='{{shareCustomerResData}}' wx:for-index="idx" wx:key="" bindtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+
+      <view class="{{idx==0 ?'cell-container-two-items-total' : 'cell-container-two-items'}}">
+        <view class="cell-container-two-items-link-name">{{item.name}}</view>
+        <view class="cell-container-two-items-share-count">{{item.shareCount}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{areaInfo.dataType==2 && shareCustomerResData.length == 1}}" class="none-data">
+  该终端暂无数据
+</view>

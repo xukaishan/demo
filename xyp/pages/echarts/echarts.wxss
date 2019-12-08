@@ -1,0 +1,30 @@
+page{
+  background-color: #f6f5f5;
+}
+.b-slect{
+  padding: 0 30rpx;
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 100rpx;
+}
+.b-slect>view:nth-child(1){
+  color: #434343;
+  font-size: 28rpx;
+}
+.b-slect>view:nth-child(2)>image{
+  width: 30rpx;
+  height: 20rpx;
+  margin-left: 20rpx;
+}
+.b-slect>view:nth-child(2)>text{
+  color: #999999;
+  font-size: 28rpx;
+}
+/*echarts */
+.container{
+  margin-top: 20rpx;
+  background-color: #fff;
+}

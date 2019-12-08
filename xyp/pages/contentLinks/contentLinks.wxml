@@ -1,0 +1,35 @@
+<view class='b-box'>
+  <view class='search'>
+    <view class='inp'>
+      <image src='../../images/search-icon.png'></image>
+      <input bindinput='search' placeholder='输入产品关键词或编号'></input>
+    </view>
+  </view>
+  <view class='b_down'>
+    <view class="{{tab2==index?'tabActive':''}}" bindtap="clickTab" wx:for="{{category}}" data-index="{{index}}" data-current="{{item.id}}">{{item.categoryName}}
+    <image src="{{tab2==index?'../../images/bottom-icon1.png':'../../images/bottom-icon.png'}}"></image>
+    </view>
+  </view>
+  <view class="tabSon" wx:if='{{showTabSon}}'>
+  <view wx:for='{{categorySon}}' class="{{tab3==index?'tabActive1':''}}" bindtap="clickTab1" data-index="{{index}}" data-current="{{item.id}}">{{item.categoryName}}</view>
+  </view>
+</view>
+<view class='commodity'>
+  <view class='commodityList' wx:for="{{commodityList}}">
+    <view class="img-modo">
+    <image src='{{imgheadurl+item.productImgUrl}}' mode='aspectFill' bindtap='openWeb' data-url='{{item.h5LinkUrl}}' data-product='{{item.productId}}'></image>
+    <image wx:if='{{item.isNew==1}}' src='../../images/New.png'></image>
+    </view>
+    <view class='comm-text'>
+      <view bindtap='openWeb' data-url='{{item.h5LinkUrl}}' data-product='{{item.productId}}'>{{item.productName}}</view>
+      <view class='b-comm' data-product='{{item.productId}}' bindtap='openWeb' data-url='{{item.h5LinkUrl}}' data-product='{{item.productId}}'>
+        <text data-product='{{item.productId}}'>{{item.productDesc}}</text>
+        <image data-product='{{item.productId}}' src='../../images/rigth-icon.png'></image>
+      </view>
+      <button plain='true' data-img='{{item.productImgUrl}}' data-name='{{item.productName}}' data-product='{{item.productId}}' data-url='{{item.h5LinkUrl}}' open-type='share'>链接分享</button>
+    </view>
+  </view>
+</view>
+<view class='down'>
+  {{bottomTxt}}
+</view>

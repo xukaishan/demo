@@ -1,0 +1,8 @@
+<!--pages/onlinePoster/onlinePoster.wxml-->
+
+<image class="image" src='{{imgheadurl+activityPic}}' style="height:{{imageHeight}}" mode="aspectFill"></image>
+<image class="float-bottom-image" src="{{imgheadurl+activityButtonPic}}" bindtap="bottomButtonTap" mode="widthFix"></image>
+<button wx:if="{{shoudShowActivityButton}}" class='float-Bottom' bindtap="bottomButtonTap">点击立即领取</button>
+
+<zy-modal title="{{alertText}}" deleteIcon="../../images/delete.png" alterPic="{{alterPic}}" hidden="{{modalHidden}}" bindreply="modalReply" bindcancel="modalCandel" confirmText="确认">
+</zy-modal>

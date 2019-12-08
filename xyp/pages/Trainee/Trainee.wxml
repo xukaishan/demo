@@ -1,0 +1,29 @@
+<view>
+
+  <view class='search'>
+    <view class='inp'>
+      <image src='../../images/search-icon.png'></image>
+      <input bindinput='search' placeholder='输入关键词'></input>
+    </view>
+  </view>
+
+  <view>
+    <block wx:for="{{trainerList}}" wx:key="id">
+      <view class="one" catchtap='itemSelected' data-item='{{item}}'>
+        <view class="{{item.isSelected?'SelectionActive':'Selection'}}">
+          <image src="../../images/Selection.png"></image>
+        </view>
+        <text>{{item.realName}}</text>
+      </view>
+    </block>
+  </view>
+
+<!-- <view class="slectList">
+<view>培训人</view>
+  <view class="slectList-text">
+    <input  placeholder="请输入培训人姓名，不超过6个字符" bindinput="inputTrainee"></input>
+  </view>
+</view> -->
+
+</view>
+<button class="commit-button" bindtap="postTrainerSelective">提交</button>

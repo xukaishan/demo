@@ -1,0 +1,5 @@
+
+<web-view wx:if='{{showUrl}}' src="{{h5url}}" bindmessage='receivePostMsg'>
+</web-view>
+<!-- 
+<view>123</view> -->

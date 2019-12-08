@@ -1,0 +1,26 @@
+<import src="../../wxParse/wxParse.wxml" />
+
+<view wx:if='{{operavideotype==1}}' class="section tc" wx:if='{{videoUrl}}'>
+
+  <video src="{{imgheadurl+videoUrl}}" bindplay="openPlay" custom-cache="{{false}}" bindpause="updataPlayTime" bindended="updataPlayTime" auto-pause-if-open-native controls objectFit='cover'>
+  </video>
+
+  <view class='videoText'>
+    <view>{{content}}</view>
+    <view>{{operavideoDesc}}</view>
+  </view>
+
+  <view class="details">
+    <view>图文详情</view>
+  </view>
+
+  <view class="content">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+
+</view>
+
+
+<web-view wx:if='{{operavideotype==2}}' src="{{h5LinkUrl}}"> </web-view>
+
+

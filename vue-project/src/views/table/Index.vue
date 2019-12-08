@@ -1,6 +1,15 @@
 <template>
   <div>
+<<<<<<< Updated upstream
     <RowItem :rowItem="rowItem0" @rowItemDateChange="rowItemSelectChange0" :fn='fn'/>
+=======
+   
+    
+   
+    <br />
+   
+    <RowItem :rowItem="rowItem0" @rowItemDateChange="rowItemSelectChange0" />
+>>>>>>> Stashed changes
     <br />
     <RowItem :rowItem="rowItem01" @rowItemDateChange="rowItemSelectChange01" />
 <br /><br />1111
@@ -9,7 +18,16 @@
     <yxpSelector :rowItem="rowItem01" @rowItemDateChange="rowItemSelectChange01" />
    
     <br /> 
+<<<<<<< Updated upstream
     <RowItem :rowItem="rowItem1" @rowItemSelectChange="rowItemSelectChange1" /> 
+=======
+    <transition name="fade">
+    <div v-show="flag">
+
+    <RowItem :rowItem="rowItem1" @rowItemSelectChange="rowItemSelectChange1" /> 
+    </div>
+    </transition>
+>>>>>>> Stashed changes
     <br /> 
     <RowItem :rowItem="rowItem2" @rowItemSelectChange="rowItemSelectChange2">
       <div slot="con_slot">
@@ -30,8 +48,12 @@
 
 <script>
 import RowItem from "@/components/RowItem.vue";
+<<<<<<< Updated upstream
 import yxpSelector from "yxp_selector";
 import Emitter from '@/mixins/emitter.js'
+=======
+import { setTimeout } from 'timers';
+>>>>>>> Stashed changes
 export default {
   components: {
     RowItem,
@@ -40,6 +62,7 @@ export default {
    mixins: [Emitter],
   data() {
     return {
+      flag:false,
       value: "",
       rowItem0: {
         tit: "日期",
@@ -62,7 +85,22 @@ export default {
       rowItem1: {
         tit: "年级",
         class: "grade",
+<<<<<<< Updated upstream
         list: []
+=======
+        list: [ { id: "12345", name: "一年级" },
+          { id: "12344", name: "二年级" },
+          { id: "12343", name: "三年级" },
+          { id: "12342", name: "四年级" },
+          { id: "12341", name: "五年级" },
+          { id: "12340", name: "六年级" },
+          { id: "123401", name: "七年级" },
+          { id: "123402", name: "八年级" },
+          { id: "113403", name: "九年级" },
+          { id: "124401", name: "高一" },
+          { id: "127402", name: "高二" },
+          { id: "128403", name: "高三" }]
+>>>>>>> Stashed changes
       },
       rowItem2: {
         tit: "学期",
@@ -81,6 +119,7 @@ export default {
   },
   mounted(){
     setTimeout(()=>{
+<<<<<<< Updated upstream
       this.rowItem1.list=[
           { id: "12345", name: "一年级" },
           { id: "12344", name: "二年级" },
@@ -95,6 +134,9 @@ export default {
           { id: "127402", name: "高二" },
           { id: "128403", name: "高三" }
         ]
+=======
+     this.flag=true
+>>>>>>> Stashed changes
     },3000)
   },
   methods: {
@@ -122,4 +164,10 @@ export default {
 </script>
 
 <style scoped lang='less'>
+.fade-enter,.fade-leave{
+    opacity: 0;
+  }
+  .fade-enter-active,.fade-leave-active{
+    transition: opacity 2s
+  }
 </style>

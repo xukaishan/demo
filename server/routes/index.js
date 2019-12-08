@@ -41,6 +41,7 @@ router.get('/api/getNavData', async (ctx, next) => {
 //   return ctx.body = { errcode: 0, errmsg: '上传成功' };
 
 // })
+<<<<<<< Updated upstream
 router.post('/api/upload', async (ctx, next) => {
     const file = ctx.request.files.file;   // 获取上传文件
     console.log(ctx.request)
@@ -52,7 +53,44 @@ router.post('/api/upload', async (ctx, next) => {
     reader.pipe(upStream);  // 可读流通过管道写入可写流
     console.log(upStream)
     return ctx.body = { errcode: 0, errmsg: '上传成功', src: file.name };
+=======
+let j = 1,status=false,arr=[];
+router.post('/api/textbook/resource/upload', async (ctx, next) => {
+  console.log(1111111, ctx.request.body);
+  let {index,total} = ctx.request.body
+  const file = ctx.request.files.file;   // 获取上传文件
+  const reader = fs.createReadStream(file.path);  // 创建可读流
+  arr.push(file.path)
+  const filePath = path.join(__dirname, '../', '/static/upload/');
+  // 组装成绝对路径
+  const fileResource = filePath + `/${file.name+j}`;
+  const upStream = fs.createWriteStream(fileResource); // 创建可写流
+  reader.pipe(upStream);  // 可读流通过管道写入可写流
+  j++;
+  status = index===total;
+  if(status) {
+    merge()
+  };
+  return ctx.body = { errcode: 0, errmsg: 'ok',data: {name:file.name,index,total}};
+>>>>>>> Stashed changes
 
+})
+function merge(){
+  arr.forEach(v=>{
+    const reader = fs.createReadStream(v);  // 创建可读流
+    const fileResource = path.join(__dirname, '../', '/static/merge/') + `1.zip`;
+    const upStream = fs.createWriteStream(fileResource); // 创建可写流
+    reader.pipe(upStream);  // 可读流通过管道写入可写流
+  })
+}
+router.get('/api/textbook/permit/permission/getUserModuleActionList?appCode=009',  (ctx, next) => {
+  return ctx.body = { errcode: 0, errmsg: 'ok',data: {data:{list:[]}}};
+})
+let i = 0,data='polling';
+router.post('/api/textbook/resource/polling',  (ctx, next) => {
+  i++;
+  if (i===10) data = 'ok'
+  return ctx.body = { errcode: 0, errmsg: 'ok',data};
 })
 
 

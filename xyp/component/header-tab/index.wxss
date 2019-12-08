@@ -1,0 +1,20 @@
+/* component/header-tab.wxss */
+.header-tab{
+    display: flex;
+    justify-content: space-around;
+    color: #f1f1f1;
+    background: #3BC26D;
+    font-size: 32rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+.head-item.select{
+  font-weight: 600
+}
+.head-item.select::after{
+  content: '';
+  display: block;
+  border-bottom: 4rpx solid #f1f1f1;
+  width: 50%;
+  margin-left: 25%;
+}

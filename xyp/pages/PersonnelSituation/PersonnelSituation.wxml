@@ -1,0 +1,171 @@
+<!-- 所有数据 -->
+<view class="{{shouldShowNavMenu ? 'cell-list-nav-menu-show' : 'cell-list-nav-menu-none'}}">
+
+  <view wx:if="{{!isDataCompare}}" wx:for='{{agentListResData}}' wx:for-index="idx" wx:key="">
+
+    <!-- 折叠 -->
+    <view class="{{idx==0?'collapsed-cell-container-total' : 'collapsed-cell-container'}}" catchtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+
+      <!-- 数据 -->
+      <view class="collapsed-cell-content">
+        <!-- <view>{{item.terminalName}}</view> -->
+        <view>{{item.name}}</view>
+        <view class="cell-total-info">
+          <view class="sort">
+            <text>总人数：{{item.shoppingGuides}}</text>
+            <view wx:if="{{idx==0}}" catchtap="{{idx==0?'sortData':''}}" data-option="{{1}}" class="sort-image-container">
+              <image class="sort-image-asc" src="{{sortMethods[0]=='desc' ? '../../images/sort_white_down.png' : '../../images/sort_light_gray_down.png'}}" mode="widthFix"></image>
+              <image class="sort-image-desc" src="{{sortMethods[0]=='desc' ? '../../images/sort_light_gray_down.png' : '../../images/sort_white_down.png'}}" mode="widthFix"></image>
+            </view>
+
+          </view>
+          <view class="sort">
+            <text>总终端数：{{item.dataType==5?1:item.terminals}}</text>
+            <view wx:if="{{idx==0}}" catchtap="{{idx==0?'sortData':''}}" data-option="{{2}}" class="sort-image-container">
+              <image class="sort-image-asc" src="{{sortMethods[1]=='desc' ? '../../images/sort_white_down.png' : '../../images/sort_light_gray_down.png'}}" mode="widthFix"></image>
+              <image class="sort-image-desc" src="{{sortMethods[1]=='desc' ? '../../images/sort_light_gray_down.png' : '../../images/sort_white_down.png'}}" mode="widthFix"></image>
+            </view>
+
+          </view>
+        </view>
+      </view>
+
+      <view class="expnaded-collapsed-icon-container" catchtap="expnadedCollapsedTap" data-idx="{{idx}}" data-item="{{item}}">
+        <image wx:if="{{idx == 0}}" class="{{expnadedIndex==idx? 'imgRotateHied' : 'imgRotate'}}" src="../../images/top_icon.png"></image>
+        <image wx:if="{{idx > 0}}" class="{{expnadedIndex==idx? 'imgRotateHied' : 'imgRotate'}}" src="../../images/top_icon_gray.png"></image>
+      </view>
+
+    </view>
+
+    <!-- 展开 -->
+    <view wx:if="{{expnadedIndex==idx}}" class="expnaded-cell" catchtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+
+      <view class="expnaded-cell-line-header">
+        <view>导购</view>
+        <view>人数</view>
+        <view>占比</view>
+      </view>
+      <view class="expnaded-cell-line-container">
+        <image class="cell-disclosure" src="../../images/rigth-icon.png"></image>
+        <view class="expnaded-cell-line">
+          <view>A类</view>
+          <view>{{item.aTypeNum}}</view>
+          <view>{{item.aTotalRateStr}}</view>
+        </view>
+        <view class="expnaded-cell-line">
+          <view>B类</view>
+          <view>{{item.bTypeNum}}</view>
+          <view>{{item.bTotalRateStr}}</view>
+        </view>
+        <view class="expnaded-cell-line">
+          <view>C类</view>
+          <view>{{item.cTypeNum}}</view>
+          <view>{{item.cTotalRateStr}}</view>
+        </view>
+        <view class="expnaded-cell-line">
+          <view>D类</view>
+          <view>{{item.dTypeNum}}</view>
+          <view>{{item.dTotalRateStr}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="divLine"></view>
+  </view>
+
+  <view wx:if="{{isDataCompare}}" wx:for='{{compareResData}}' wx:for-index="idx" wx:key="">
+
+    <!-- 折叠 -->
+    <view class="collapsed-cell-container" catchtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+
+      <!-- 区域数据 -->
+      <view wx:if="{{item.dataType<2}}" class="collapsed-cell-content">
+        <view>{{item.areaName}}</view>
+        <view class="cell-total-info">
+          <view>总人数：{{item.shoppingGuides}}</view>
+          <view>总终端数：{{item.dataType==2?1:item.terminals}}</view>
+        </view>
+      </view>
+
+      <!-- 终端数据 -->
+      <view wx:if="{{item.dataType==2}}" class="collapsed-cell-content">
+        <view>{{item.terminalName}}</view>
+        <view class="cell-total-info">
+          <view>总人数：{{item.shoppingGuides}}</view>
+          <view>总终端数：{{item.dataType==2?1:item.terminals}}</view>
+        </view>
+      </view>
+
+      <view class="expnaded-collapsed-icon-container" catchtap="expnadedCollapsedTap" data-idx="{{idx}}" data-item="{{item}}">
+        <image class="{{expnadedIndex==idx? 'imgRotateHied' : 'imgRotate'}}" src="../../images/top_icon_gray.png"></image>
+      </view>
+
+    </view>
+
+    <!-- 展开 -->
+    <view wx:if="{{expnadedIndex==idx}}" class="expnaded-cell" catchtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+      <view class="expnaded-cell-line-header">
+        <view>导购</view>
+        <view>人数</view>
+        <view>占比</view>
+      </view>
+      <view class="expnaded-cell-line">
+        <view>A类</view>
+        <view>{{item.aTypeNum}}</view>
+        <view>{{item.aTotalRateStr}}</view>
+      </view>
+      <view class="expnaded-cell-line">
+        <view>B类</view>
+        <view>{{item.bTypeNum}}</view>
+        <view>{{item.bTotalRateStr}}</view>
+      </view>
+      <view class="expnaded-cell-line">
+        <view>C类</view>
+        <view>{{item.cTypeNum}}</view>
+        <view>{{item.cTotalRateStr}}</view>
+      </view>
+      <view class="expnaded-cell-line">
+        <view>D类</view>
+        <view>{{item.dTypeNum}}</view>
+        <view>{{item.dTotalRateStr}}</view>
+      </view>
+
+    </view>
+
+    <view class="divLine"></view>
+  </view>
+
+
+</view>
+
+
+<view wx:if="{{shouldShowNavMenu}}">
+  <!-- 一级渲染 -->
+  <scroll-view scroll-x="true" class='scroll-x'>
+    <view class="drop-menu-nav-scroll">
+
+      <view class="nav-item" wx:for="{{navigationMenuItems}}" wx:for-index="idx" wx:key="areaName" catchtap="navItemTap" data-idx="{{idx}}" data-item="{{item}}">
+        <view class="{{item.selected ? 'tab-selected' : ''}}"> {{item.areaName}} </view>
+        <image catchtap="navItemArrowTap" data-idx="{{idx}}" data-item="{{item}}" src="{{item.selected ? '/images/bottom-icon1.png' : '/images/bottom-icon.png'}}"></image>
+        <image wx:if='{{shouldShowDropMenu && item.selected}}' class="top-tab" src="/images/top-tab.png"></image>
+      </view>
+
+    </view>
+  </scroll-view>
+
+  <view class="drop-menu" wx:if='{{shouldShowDropMenu}}' bindtap="dropMenuBgTap">
+
+    <view class="icon_top"></view>
+    <view class="menu-item-container">
+      <view wx:for='{{dropMenuItems}}' wx:for-index="idx" wx:key="" class="{{item.selected?'menu-item-active':''}}" catchtap="menuItemTap" data-idx="{{idx}}" data-item="{{item}}">
+        {{(item.terminalId != null) ? item.terminalName : item.areaName }}
+      </view>
+    </view>
+
+    <view class="suerBtn">
+      <view catchtap="resetTap">重置</view>
+      <view catchtap="sureTap">确定</view>
+    </view>
+
+  </view>
+</view>

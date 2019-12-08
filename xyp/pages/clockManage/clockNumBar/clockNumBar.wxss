@@ -1,0 +1,80 @@
+/* pages/clockManage/clockNumBar.wxss */
+.clock-num-bar{
+    box-sizing: border-box;
+    width: 90%;
+    height: 240rpx;
+    border-radius: 20rpx;
+    margin: 0 auto;
+    padding: 20rpx 30rpx 40rpx 30rpx;
+    background: #fff;
+    box-shadow: 0 0 10rpx #333; 
+}
+.clock-num-bar .num-bar-head{
+    display: flex;
+    height: 70rpx;
+    border-bottom: 1px solid #f3f3f3;
+}
+.clock-num-bar .num-bar-head .num-bar-head-lf{
+    width: 50%;
+    display: flex;
+    line-height: 70rpx;
+    align-items: center;
+}
+.clock-num-bar .num-bar-head .num-bar-head-lf .num-bar-head-img{
+    width: 20%;
+    height: 100%;
+}
+.clock-num-bar .num-bar-head .num-bar-head-lf .rigth-icon{
+    width: 6%;
+    height: 30%;
+}
+.clock-num-bar .num-bar-head .num-bar-head-lf .lf-date{
+    width: 80%;
+    text-align: center;
+}
+.clock-num-bar .num-bar-head .num-bar-head-rig{
+    width: 50%;
+    text-align: right; 
+    line-height: 70rpx;
+}
+.clock-num-bar .num-bar-head .num-bar-head-rig .clock-ing-num{
+    color: #39c26f; 
+}
+.clock-num-bar .num-bar-body{
+    display: flex;
+    height: 100rpx;
+    padding: 10rpx 0;
+    text-align: center;
+}
+.clock-num-bar .num-bar-body .bar-body-lf{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.clock-num-bar .num-bar-body .bar-body-rig{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.clock-num-bar .num-bar-body .text-info{
+    line-height: 40rpx;
+}
+.clock-num-bar .num-bar-body .num-info{
+    display: flex;
+    justify-content: center;
+    font-size: 36rpx;
+    align-items: baseline;
+    font-weight: 600;
+}
+.clock-num-bar .num-bar-body .num-info::after{
+    content: '人';
+    display: block;
+    width: 20rpx;
+    height: 20rpx;
+    font-size: 28rpx;
+    
+}
+.num-bar-body .active{
+    color: #39c26f
+}

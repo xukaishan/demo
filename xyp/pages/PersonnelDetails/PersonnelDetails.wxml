@@ -1,0 +1,16 @@
+<view wx:if = "{{resTerminalData.length > 0}}" class="list">
+  <view class="name">
+    <view>姓名</view>
+    <view>导购类别</view>
+    <view>入职年限</view>
+  </view>
+  <view class="name" wx:for="{{resTerminalData}}" wx:key="">
+  <view>{{item.realName}}</view>
+  <view>{{item.guideLevel}}</view>
+  <view>{{item.workYears}}</view>
+  </view>
+</view>
+
+<view wx:if = "{{resTerminalData.length == 0}}" class="none-data">
+该终端暂无导购
+</view>

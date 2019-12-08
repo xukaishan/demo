@@ -1,0 +1,163 @@
+<!--pages/trainingRecord/trainingRecord.wxml-->
+<view class="screen">
+  <view class="screenTime">
+    <picker mode="date" value="{{currentDateStartString}}" bindchange="bindDateChange" data-tag="{{1}}">
+      <view class="picker"> {{currentDateStartString}} </view>
+    </picker>
+    <view class="timeType">
+      <view>当前</view>
+      <image src="../../images/Arrow.png"></image>
+    </view>
+    <picker mode="date" value="{{currentDateEndString}}" bindchange="bindDateChange" data-tag="{{2}}">
+      <view class="picker"> {{currentDateEndString}} </view>
+    </picker>
+  </view>
+
+  <view class="screenTime" wx:if="{{statisticsCondition != 0 && currentAreaInfo.dataType < 3}}">
+    <picker mode="date" value="{{compareDateStartString}}" bindchange="bindDateChange" data-tag="{{3}}">
+      <view class="picker"> {{compareDateStartString}}</view>
+    </picker>
+    <view class="timeType">
+      <view>对比</view>
+      <image src="../../images/Arrow.png"></image>
+    </view>
+    <picker mode="date" value="{{compareDateEndString}}" bindchange="bindDateChange" data-tag="{{4}}">
+      <view class="picker"> {{compareDateEndString}}</view>
+    </picker>
+  </view>
+
+  <view class="opt_box">
+    <view class="opt">
+      <text bindtap="openForward">{{trainingRecordTypeFilteredResult}}</text>
+      <image bindtap="openForward" src="../../images/opt.png"></image>
+      <view wx:if='{{showForward==1}}' class="showArrow"></view>
+      <view class="show_forward" wx:if='{{showForward==1}}'>
+        <view catchtap="fowwardFollowersTap" data-tag="{{0}}">集中培训</view>
+        <view catchtap="fowwardFollowersTap" data-tag="{{1}}">点对点培训</view>
+        <view catchtap="fowwardFollowersTap" data-tag="{{2}}">微信/直播培训</view>
+      </view>
+    </view>
+    <view wx:if="{{currentAreaInfo.areaLevel==null}}" class="opt">
+      <text bindtap="openRate">{{trainingRecordResult}}</text>
+      <image bindtap="openRate" src="../../images/opt.png"></image>
+      <view wx:if='{{openRate==1}}' class="openRate"></view>
+      <view class="open_rate" wx:if='{{openRate==1}}'>
+        <view catchtap="openRateTap" data-tag="{{0}}">覆盖率</view>
+        <view catchtap="openRateTap" data-tag="{{1}}">完成率</view>
+      </view>
+    </view>
+    <view class="opt">
+      <text bindtap="openStatistics">{{statisticsFilteredResult}}</text>
+      <image bindtap="openStatistics" src="../../images/opt.png"> </image>
+      <view class="showArrow1" wx:if='{{showStatistics==1}}'></view>
+      <view class="show_Statistics" wx:if='{{showStatistics==1}}'>
+        <view catchtap="statisticsTap" data-tag="{{0}}">统计</view>
+        <!-- 预留当有同比数据后开放 -->
+        <!-- <view catchtap="statisticsTap" data-tag="{{1}}">同比</view> -->
+        <view catchtap="statisticsTap" data-tag="{{2}}">环比</view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<!-- 转发情况 -->
+<view wx:if="{{statisticsCondition == 0 && currentAreaInfo.dataType < 3}}">
+
+  <view>
+    <view class="header-container">
+      <view>区域</view>
+      <view bindtap="sortData" data-option="{{1}}" class="sort"><text>{{trainingRecordResultCount}}</text><image src="../../images/sort_icon.png"></image></view>
+      <view bindtap="sortData" data-option="{{2}}" class="sort"><text>{{trainingRecordResult}}</text><image src="../../images/sort_icon.png"></image></view>
+    </view>
+    <view>
+
+      <view wx:for='{{shareCustomerResData}}' wx:for-index="idx" wx:key="" bindtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+
+        <view wx:if="{{trainingRecordCondition==0}}" class="{{idx==0 ?'cell-container-total' : 'cell-container'}}">
+          <view>{{item.name}}</view>
+          <view wx:if="{{trainingRecordTypeCondition==0}}">{{item.focusCoverTerminals}}</view>
+          <view wx:if="{{trainingRecordTypeCondition==1}}">{{item.pointCoverTerminals}}</view>
+          <view wx:if="{{trainingRecordTypeCondition==2}}">{{item.wechatCoverTerminals}}</view>
+          <view wx:if="{{trainingRecordTypeCondition==0}}" class="container">
+            <circle draw='{{registerOne+idx}}' per='{{item.focusCoverTerminalRate*100.0}}' r='50' />
+          </view>
+          <view wx:if="{{trainingRecordTypeCondition==1}}" class="container">
+            <circle draw='{{registerOne+idx}}' per='{{item.pointCoverTerminalRate*100.0}}' r='50' />
+          </view>
+          <view wx:if="{{trainingRecordTypeCondition==2}}" class="container">
+            <circle draw='{{registerOne+idx}}' per='{{item.wechatCoverTerminalRate*100.0}}' r='50' />
+          </view>
+          <image class="cell-disclosure" src="{{(idx==0)? '': '../../images/rigth-icon.png'}}"></image>
+        </view>
+
+        <view wx:if="{{trainingRecordCondition==1}}" class="{{idx==0 ?'cell-container-total' : 'cell-container'}}">
+          <view>{{item.name}}</view>
+          <view wx:if="{{trainingRecordTypeCondition==0}}">{{item.focusDoneTasks}}</view>
+          <view wx:if="{{trainingRecordTypeCondition==1}}">{{item.pointDoneTasks}}</view>
+          <view wx:if="{{trainingRecordTypeCondition==2}}">{{item.wechatDoneTasks}}</view>
+          <view wx:if="{{trainingRecordTypeCondition==0}}" class="container">
+            <circle draw='{{registerOne+idx}}' per='{{item.focusDoneTaskRate*100.0}}' r='50' />
+          </view>
+          <view wx:if="{{trainingRecordTypeCondition==1}}" class="container">
+            <circle draw='{{registerOne+idx}}' per='{{item.pointDoneTaskRate*100.0}}' r='50' />
+          </view>
+          <view wx:if="{{trainingRecordTypeCondition==2}}" class="container">
+            <circle draw='{{registerOne+idx}}' per='{{item.wechatDoneTaskRate*100.0}}' r='50' />
+          </view>
+          <image class="cell-disclosure" src="{{(idx==0)? '': '../../images/rigth-icon.png'}}"></image>
+        </view>
+
+        <!-- <view wx:if="{{currentAreaInfo.dataType == 3}}" class="{{idx==0 ?'cell-container-two-items-total' : 'cell-container-two-items'}}">
+          <view class="cell-container-two-items-link-name">{{item.name}}</view>
+          <view class="cell-container-two-items-share-count">{{item.shareCount}}</view>
+        </view> -->
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{statisticsCondition != 0 && currentAreaInfo.dataType < 3}}">
+  <!-- 比较 -->
+  <view>
+
+    <view wx:for='{{shareCustomerCompareResData}}' wx:for-index="idx" wx:key=" " bindtap="cellTap" data-idx="{{idx}}" data-item="{{item}}">
+      <view class="{{idx==0 ?'cell-container-compare-total' : 'cell-container-compare'}}">
+        <view class="cell-container-compare-content">
+          <view class="city " wx:if="{{item.doneTaskRateResult!=null}}">{{item.doneTaskRateResult.areaName}}</view>
+          <view class="city " wx:if="{{item.doneTaskRateResult==null}}">{{item.coverTerminalsRateResult.areaName}}</view>
+          <view class="cell-container-list">
+            <view>指标</view>
+            <view>当前值</view>
+            <view>对比值</view>
+            <!-- <view>全国</view> -->
+            <view>{{statisticsFilteredResult}}增长</view>
+          </view>
+
+          <view wx:if="{{currentAreaInfo.areaLevel==null}}" class="cell-container-list">
+            <view>完成率</view>
+            <view>{{item.doneTaskRateResult.currentValue}}</view>
+            <view>{{item.doneTaskRateResult.compareValue}}</view>
+            <!-- <view>{{item.doneTaskRateResult.nationAvg}}</view> -->
+            <view wx:if="{{item.doneTaskRateResult.riseRates > 0}}" class="increase-rate-positive"> ↑{{item.doneTaskRateResult.riseRatesStr}} </view>
+            <view wx:if="{{item.doneTaskRateResult.riseRates == 0}}" class="increase-rate-zero">• {{item.doneTaskRateResult.riseRatesStr}} </view>
+            <view wx:if="{{item.doneTaskRateResult.riseRates < 0}}" class="increase-rate-negative">↓{{item.doneTaskRateResult.riseRatesStr}} </view>
+          </view>
+
+          <view class="cell-container-list ">
+            <view>覆盖率</view>
+            <view>{{item.coverTerminalsRateResult.currentValue}}</view>
+            <view>{{item.coverTerminalsRateResult.compareValue}}</view>
+            <!-- <view>{{item.shareCountResult.nationAvg}}</view> -->
+            <view wx:if="{{item.coverTerminalsRateResult.riseRates > 0}}" class="increase-rate-positive"> ↑{{item.coverTerminalsRateResult.riseRatesStr}} </view>
+            <view wx:if="{{item.coverTerminalsRateResult.riseRates == 0}}" class="increase-rate-zero">• {{item.coverTerminalsRateResult.riseRatesStr}} </view>
+            <view wx:if="{{item.coverTerminalsRateResult.riseRates < 0}}" class="increase-rate-negative"> ↓{{item.coverTerminalsRateResult.riseRatesStr}} </view>
+          </view>
+        </view>
+        <image class="cell-disclosure" src="{{idx==0?'':'../../images/rigth-icon.png'}}"></image>
+      </view>
+    </view>
+
+  </view>
+
+</view>

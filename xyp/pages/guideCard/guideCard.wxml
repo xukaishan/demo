@@ -1,0 +1,31 @@
+<!--pages/guideCard/guideCard.wxml-->
+
+<view class="content-container" style='background:url(https://daogouapi.youxuepai.com/file/wechat/img/0911112739608guide-card-bg.jpg) no-repeat center;background-size: cover;'>
+
+  <view class="qrcode-container" style='background:url(https://daogouapi.youxuepai.com/file/wechat/img/0911112818117guide-qrcode-bg.png) no-repeat center;background-size: cover;' bindlongpress="longpress" data-qrcodeurlpath="{{qrcodeURLPath}}" >
+    <image class="qrcode-image" src="{{qrcodeURLPath}}" mode="widthFix" />
+     <text class="long-press-text">长按保存二维码</text>
+    <view class="wechat-button-container" bindtap='contactWechat'>
+      <image class="wechat-icon" src="/images/oneWx.png"></image>
+      <text>一键微信联系</text>
+    </view>
+
+  </view>
+
+  <view class="guide-info-container">
+  <text>{{shoppingGuideInfo.realName}}</text>
+    <view class="phone-container" bindtap='callGuide' data-phonenumber="{{shoppingGuideInfo.mobilePhoneNum}}">
+      <image src="/images/phon-h.png" mode="widthFix"></image>
+      <!-- <text>{{userInfo.mobilePhoneNum}}</text> -->
+       <text>{{shoppingGuideInfo.mobilePhoneNum}}</text>
+    </view>
+
+    <view class="adrres-container">
+      <image src="/images/posin-h.png" mode="widthFix"></image>
+      <!-- <text>{{userInfo.detailAddress}}</text> -->
+       <text>{{shoppingGuideInfo.terminal.address}}</text>
+    </view>
+
+  </view>
+
+</view>

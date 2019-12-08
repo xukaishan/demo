@@ -1,0 +1,9 @@
+<view class='authoriztion'>
+<text class="title">特别申明</text>
+<view>
+该小程序为优学派内部员工及代理商、合作伙伴使用，因涉及到身份审核，需优学派内部员工及代理商、合作伙伴使用前授权手机号以及微信头像等相关信息。非以上人群请勿使用。
+</view>
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">同意授权</button>
+<button bindtap="cancelTap">暂不授权</button>
+<button wx:if='{{isshow}}' catchtap='openIndexs'>审核人员点击进入</button>
+</view>

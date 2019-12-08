@@ -1,0 +1,69 @@
+<view class="{{showTab2||suboptions2?'b-box1':'b-box'}}">
+  <view class='search'>
+    <view class='inp'>
+      <image src='../../images/search-icon.png'></image>
+      <input bindinput='search' placeholder='输入产品关键词或编号'></input>
+    </view>
+  </view>
+  <scroll-view scroll-x class='b_down scroll-x'>
+    <view class="{{boxShow?'hor':'hor1'}}">
+      <view class="{{tab1==index?'tabActive':''}} option" bindtap="clickTab" wx:for="{{categoryName}}" data-name="{{item.categoryName}}" data-level='{{item.level}}' data-index="{{index}}" data-current="{{item.id}}">
+        <view data-level='{{item.level}}' data-index="{{index}}" data-name="{{item.categoryName}}" data-current="{{item.id}}">{{item.categoryName}}</view>
+        <!-- <image wx:if='{{item.level}}' bindtap="openshowTab2" data-level='{{item.level}}' data-index="{{index}}" data-current="{{item.id}}" src="{{tab1==index&&showSon==true?'../../images/bottom-icon1.png':'../../images/bottom-icon.png'}}"></image> -->
+        <image wx:if='{{item.level}}' bindtap="openshowTab2" data-level='{{item.level}}' data-index="{{index}}" data-name="{{item.categoryName}}" data-current="{{item.id}}" src="{{tab1==index?'../../images/bottom-icon1.png':'../../images/bottom-icon.png'}}"></image>
+        <image wx:if='{{tab1==index&&item.level&&showSon==true}}' class="top-tab" src="../../images/top-tab.png"></image>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 多级tab二级渲染 -->
+  <view wx:if='{{showTab2}}' class="showTba2">
+    <scroll-view scroll-y class="tab-f">
+      <view class="{{tab2==index?'tabActive2':''}} showSon2" bindtap="clickTab2" wx:for='{{category2}}' data-name="{{item.categoryName}}" data-index="{{index}}" data-current="{{item.id}}">
+        <text bindtap="clickTab2" data-index="{{index}}" data-current="{{item.id}}" data-name="{{item.categoryName}}">{{item.categoryName}}</text>
+        <icon wx:if='{{tab2==index}}' bindtap="clickTab2" data-index="{{index}}" data-current="{{item.id}}" data-name="{{item.categoryName}}" class="icon-rigth"></icon>
+      </view>
+    </scroll-view>
+    <scroll-view scroll-y class="tab-r">
+      <view class="{{item.data?'tab3Active':''}} showSon3" wx:for='{{slectTab3}}' bindtap="clickTab3" data-name="{{item.categoryName}}" data-index="{{index}}" data-current="{{item.id}}">{{item.categoryName}}</view>
+    </scroll-view>
+  </view>
+  <!-- 二级没有三级 -->
+  <scroll-view scroll-y class="suboptions" wx:if='{{suboptions2}}'>
+    <view class="suboptions2" bindtap="clickTabs2" wx:for='{{slectTab2}}' data-index="{{index}}" data-current="{{item.id}}" data-name="{{item.categoryName}}">
+      <text class="{{item.data?'suboptionsActive2':''}} " data-index="{{index}}" data-current="{{item.id}}" data-name="{{item.categoryName}}">{{item.categoryName}}</text>
+    </view>
+  </scroll-view>
+  <view wx:if='{{suboptions2||showTab2}}' class="btns">
+    <view bindtap="reset">重置</view>
+    <view bindtap="suerQuery">确定</view>
+  </view>
+  <view class="tab-bottom" catchtap="closeTab"></view>
+</view>
+<view class='commodity'>
+  <view class='commodityList' wx:for="{{commodityList}}" bindtap='openWeb' data-operavideoid='{{item.operavideoId}}' data-url='{{item.h5LinkUrl}}' data-operavideoId="{{item.operavideoId}}"data-operavideotype="{{item.operavideoType}}" >
+
+    <view class="img-modo">
+      <!-- <image src='{{imgheadurl+item.operavideoUrl}}' mode='aspectFill' data-url='{{item.h5LinkUrl}}'></image> -->
+       <image src='{{imgheadurl+item.operavideoImgUrl}}' mode='aspectFill' data-url='{{item.h5LinkUrl}}'></image>
+      <image class="newImg" wx:if='{{item.isNew==1}}' src='../../images/New.png'></image>
+      <image class="playImg" src="../../images/play-icon.png"></image>
+    </view>
+
+    <view class='comm-text'>
+      <view>{{item.operavideoName}}</view>
+
+      <view class='b-comm'>
+        <text>{{item.operavideoDesc}}</text>
+        <image src='../../images/rigth-icon.png'></image>
+
+      </view>
+      <button plain='true' data-img='{{item.operavideoImgUrl}}' data-name='{{item.operavideoName}}' data-product='{{item.operavideoId}}' catchtap="share" open-type='share'>
+        链接分享
+      </button>
+    </view>
+
+  </view>
+</view>
+<view class='down'>
+  {{bottomTxt}}
+</view>

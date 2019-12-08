@@ -1,0 +1,46 @@
+
+<!-- 导购进入 -->
+<view wx:if='{{accessType==0}}' class='codeBg' style='background:url(https://youxuepai-wechat.oss-cn-beijing.aliyuncs.com/yxp/code-bg.jpg) no-repeat center;background-size: cover;'>
+
+  <view class='main'>
+
+    <image src='{{headimg}}' mode='aspectFill'>
+    </image>
+
+    <view class='name'>{{name}}
+    </view>
+
+    <view class='txt' wx:if="{{qrcodeURLPath}}"> 我的微信二维码 </view>
+    <view class='txt' wx:else> 点击上传微信二维码 </view>
+
+    <image wx:if="{{qrcodeURLPath}}" src='{{qrcodeURLPath}}' bindtap='uploadImage' >
+    </image>
+    <image wx:else src='https://youxuepai-wechat.oss-cn-beijing.aliyuncs.com/youxuepaiMs/png/add.png' bindtap='uploadImage'>
+    </image>
+
+  </view>
+  
+</view>
+
+
+<!-- 粉丝进入 -->
+<view wx:if='{{accessType==1}}' class='codeBg' style='background:url(https://youxuepai-wechat.oss-cn-beijing.aliyuncs.com/yxp/code-bg.jpg) no-repeat center;background-size: cover;'>
+  <view class='main'>
+
+    <image src='{{headimg}}' mode='aspectFill'>
+    </image>
+
+    <view class='name'>{{name}}
+    </view>
+
+    <view class='txt' wx:if="{{qrcodeURLPath}}"> 长按保存导购二维码 </view>
+    <view class='txt' wx:else> 当前导购未添加二维码可以先关注公众号哦 </view>
+
+    <image wx:if="{{qrcodeURLPath}}" src='{{qrcodeURLPath}}' bindtap='uploadImage' data-imgurl='{{qrcodeURLPath}}' bindlongpress="longpress" mode='aspectFill' >
+    </image>
+    <image wx:else src='https://youxuepai-wechat.oss-cn-beijing.aliyuncs.com/youxuepaiMs/png/YouxuepaiQRcode.png' data-imgurl='https://youxuepai-wechat.oss-cn-beijing.aliyuncs.com/youxuepaiMs/png/YouxuepaiQRcode.png' bindtap='uploadImage' bindlongpress="longpress" mode='aspectFill'>
+    </image>
+
+  </view>
+
+</view>

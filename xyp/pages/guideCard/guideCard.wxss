@@ -1,0 +1,90 @@
+/* pages/guideCard/guideCard.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.content-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: red;
+}
+
+.qrcode-container {
+  margin-top: 20%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  background-color: wheat;
+  color: rgb(136, 135, 135);
+  font-size: 28rpx;
+}
+
+.qrcode-image {
+  margin-top: 32rpx;
+  margin-bottom: 16rpx;
+  width: 80%;
+}
+
+.wechat-button-container {
+  margin-top: 16rpx;
+  margin-bottom: 32rpx;
+  width: 60%;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: white;
+  background-color: #3bc26d;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+}
+
+.wechat-icon {
+  margin-right: 16rpx;
+  width: 51rpx;
+  height: 41rpx;
+}
+
+.guide-info-container {
+  margin-top: 10%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  font-size: 34rpx;
+  color: #3bc26d;
+  /* background-color: white; */
+}
+
+.phone-container {
+  margin: 8rpx 0 8rpx 0;
+  align-content: center;
+  align-items: center;
+}
+
+.phone-container>image {
+  width: 25rpx;
+  height: 25rpx;
+  margin-right: 16rpx;
+}
+
+.adrres-container {
+  margin: 8rpx 0 8rpx 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.adrres-container>image {
+  width: 25rpx;
+  height: 25rpx;
+  margin-right: 16rpx;
+}

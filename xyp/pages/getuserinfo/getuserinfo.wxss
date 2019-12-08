@@ -1,0 +1,16 @@
+.authoriztion{
+  height: 100%;
+  padding: 0 30rpx;
+  padding-top: 30%;
+}
+.authoriztion>view{
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  color: #434343;
+}
+.authoriztion>button{
+  margin-top: 35rpx;
+  background-color: #F34F49;
+  color: #fff;
+  font-size: 34rpx;
+}

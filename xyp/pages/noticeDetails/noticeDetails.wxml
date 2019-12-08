@@ -1,0 +1,5 @@
+<view class="noticeTitel">{{noticeTitel}}</view>
+<view class='noticeTime'>{{noticeTime}}</view>
+<view class='main'>
+{{content}}
+</view>

@@ -1,0 +1,10 @@
+<view class='search'>
+  <view class='inp'>
+    <image src='../../images/search-icon.png'></image>
+    <input bindinput='search' placeholder='输入问题关键词或编号'></input>
+  </view>
+</view>
+
+<view class='questionList'>
+<view wx:for="{{questionList}}" bindtap='questionDetails' data-question="{{item.qaBankId}}">{{item.question}}</view>
+</view>

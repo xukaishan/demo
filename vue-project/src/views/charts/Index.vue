@@ -20,6 +20,7 @@
 
 <script>
 import MyButton from "@/components/MyButton.vue";
+import { Promise } from 'q';
 export default {
   data() {
     return {
@@ -38,9 +39,23 @@ export default {
   },
   methods: {
     btnClick() {
-      this.$get("/getExcelData").then(res => {
-        console.log(res);
-          this.tableData = res[0].data
+      this.handClick().then(res=>{
+        console.log('res',res)
+      }).catch(err=>{
+        console.log(2,err)
+      })
+    },
+    handClick(){
+      return this.$get("/getExcelData").then(res => {
+        if(res) {
+          console.log(res);
+          this.tableData = res[0].data;
+          return res;
+          // return Promise.resolve(res)
+        };
+      }).catch(err=>{
+        console.log(1,err);
+        return Promise.reject(err)
       });
     },
     onHandler(val){

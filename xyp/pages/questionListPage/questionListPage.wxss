@@ -1,0 +1,6 @@
+.questionList>view{
+  padding: 30rpx;
+  font-size: 32rpx;
+  color: #534F4F;
+  border-bottom: 1px solid #f6f5f5;
+}

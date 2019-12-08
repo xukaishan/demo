@@ -1,0 +1,41 @@
+/* component/circle/circle.wxss */
+
+.circle_box,.circle_draw{ position: relative; }
+.circle_bg{position: absolute;}
+
+.circle_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle_txt{
+  position: absolute;
+  font-size: 28rpx;
+}
+
+.circle_draw_bg {
+  position: absolute;
+ width: 100rpx;
+  height: 100rpx;
+   /* background-color:brown; */
+}
+
+.circle_draw_img_bg {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100rpx;
+  height: 100rpx;
+  /* background-color: red; */
+}
+
+.circle_draw_img {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100rpx;
+  height: 100rpx;
+   /* background-color: green; */
+}

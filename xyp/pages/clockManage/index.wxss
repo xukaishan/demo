@@ -1,0 +1,19 @@
+/* pages/clockManage/index.wxss */
+/* @import './clockNumBar/clockNumBar.wxss';
+@import '../../component/header-tab/index.wxss'; */
+.clock-manage{
+    height: 100vh;
+    background: #f3f3f3;
+}
+.header{
+    height: 14vh;
+    background: #3BC26D
+}
+.tab-clock{
+    width: 100%;
+    position: absolute;
+    top: 86rpx;
+}
+.list{
+    margin-top: 200rpx;
+}

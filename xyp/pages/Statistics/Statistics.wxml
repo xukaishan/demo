@@ -1,0 +1,159 @@
+<import src="../../component/tabBar/tabBar.wxml" />  
+ <template is="tabBar" data="{{tabBar: tabBar}}" /> 
+ 
+<view wx:if='{{!isLogined}}' class="home-pre-image-container">
+   <image src="https://daogouapi.youxuepai.com/file/wechat/img/0905171238065statistics-pre.png"  mode='widthFix' class="home-pre-image" /> 
+</view>
+
+<!--  -->
+<view wx:if='{{isLogined}}' >
+  <view class='navBox'>
+    <view class='top' style='background: url({{topBack?"https://youxuepai-wechat.oss-cn-beijing.aliyuncs.com/yxp/share1.jpg":"https://youxuepai-wechat.oss-cn-beijing.aliyuncs.com/yxp/share.jpg"}}) no-repeat center; background-size: cover;'>
+      <view class='nav'>
+        <view class="{{tab==0?'navActive':''}}" data-current="0" bindtap="clickTab">链接分享统计</view>
+        <view class="{{tab==1?'navActive1':''}}" data-current="1" bindtap="clickTab">顾客统计</view>
+      </view>
+      <view class='showNum' wx:if="{{tab==0}}">
+        <view class='showNums' bindtap='openSharingTimes'>
+          <view>{{timetxt}}</view>
+          <view class='num1'>{{num==null?'0':num}}</view>
+        </view>
+      </view>
+      <view class='customer-t' wx:else>
+        <view bindtap='customerAdd'>
+          <view>今日新增</view>
+          <view>{{statistics.increasedToday}}</view>
+        </view>
+
+        <view bindtap='customerNumber'>
+          <view>顾客总数</view>
+          <view>{{statistics.totalCustomer }}</view>
+        </view>
+        <view class='customer-b'>
+          <view class='box' bindtap='openPurchase' data-current="3">
+            <image src='../../images/customer3.png' data-current="3"></image>
+            <view>
+              <view data-current="3">已购买</view>
+              <view data-current="3">{{statistics.purchasedCustomer }}</view>
+            </view>
+          </view>
+          <view class='box' bindtap='openPurchase' data-current="4">
+            <image src='../../images/customer4.png' data-current="4"></image>
+            <view>
+              <view data-current="4">未购买</view>
+              <view data-current="4">{{statistics.unPurchasedCustomer }}</view>
+            </view>
+          </view>
+          <view class='box' bindtap='openPurchase' data-current="5">
+            <image src='../../images/customer5.png' data-current="5"></image>
+            <view>
+              <view data-current="5">未标签</view>
+              <view data-current="5">{{statistics.unLabelCustomer }}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <!-- 链接分享统计 -->
+    <view wx:if="{{tab==0}}">
+
+      <view class='b_down'>
+        <view class="txt {{tabs==0?'tabActive1':''}}" data-current="0" bindtap="clickTabs">
+          <view data-current="0">{{timeText}}</view>
+          <image src="{{tabs==0?'../../images/db1-icon.png':'../../images/db-icon.png'}}"></image>
+        </view>
+        <view class="txt {{tabs==1?'tabActive1':''}}" data-current="1" bindtap="clickTabs">
+          <view data-current="1">点击量</view>
+          <image src="{{tabs==1?'../../images/db1-icon.png':'../../images/db-icon.png'}}"></image>
+        </view>
+      </view>
+    </view>
+    <view class='slect-box' wx:if="{{showBtn}}">
+      <view class='{{btnNum==0?"slect-btnActive":"days"}}' data-current="{{0}}" bindtap="clickBtnNum">当天</view>
+      <view class='{{btnNum==1?"slect-btnActive":"days"}}' data-current="{{1}}" bindtap="clickBtnNum">近一周</view>
+      <view class='{{btnNum==2?"slect-btnActive":"days"}}' data-current="{{2}}" bindtap="clickBtnNum">近一月</view>
+      <view class='Arrow'></view>
+    </view>
+  </view>
+  <view class='main'>
+    <!-- 内容列表 -->
+    <view wx:if="{{tab==0}}">
+      <view class='commodity'>
+        <view class='commodityList' wx:key='aWeek' wx:for="{{share}}" data-sharid='{{item.shareChannelId}}' data-customer="{{item.product.productId}}" bindtap='aWeek'>
+          <image src='{{imgheadurl+item.product.productImgUrl}}' data-sharid='{{item.shareChannelId}}' data-customer="{{item.product.productId}}"></image>
+          <view class='comm-text'>
+            <view data-customer="{{item.product.productId}}" data-sharid='{{item.shareChannelId}}'>{{item.product.productName}}</view>
+            <view class='b-comm'>
+              <text data-customer="{{item.product.productId}}" data-sharid='{{item.shareChannelId}}'>{{item.product.productDesc}}</text>
+              <image src='../../images/rigth-icon.png' data-sharid='{{item.shareChannelId}}' data-customer="{{item.product.productId}}"></image>
+            </view>
+            <view>
+              <view data-customer="{{item.product.productId}}" data-sharid='{{item.shareChannelId}}' wx:if="{{item.shareChannelName}} == null" >链接来源：小程序</view>
+              <view data-customer="{{item.product.productId}}" data-sharid='{{item.shareChannelId}}' wx:else="{{item.shareChannelName}} == null" >链接来源：{{item.shareChannelName}}</view>
+              <view data-customer="{{item.product.productId}}" data-sharid='{{item.shareChannelId}}'>点击次数：{{item.watchCount}}次</view>
+              <view data-customer="{{item.product.productId}}" data-sharid='{{item.shareChannelId}}'>分享次数：{{item.shareCount}}次</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='down'>
+        {{bottomTxt}}
+      </view>
+    </view>
+
+    <!-- 顾客统计 -->
+    <view class='comm' wx:else>
+
+      <view class='times'>
+        <view class='times-sle' bindtap='slectShows'>
+          <image class='foot-img' src='../../images/foot.png'></image>
+          <text>{{tabday}}</text>
+          <image src='../../images/db-icon.png'></image>
+        </view>
+        <view class='b-slect' wx:if="{{slectShow}}">
+          <view class="{{tabClick==0?'tabActive':'tabDays'}}" data-current="{{0}}" bindtap='tabClick'>当天</view>
+          <view class="{{tabClick==1?'tabActive':'tabDays'}}" data-current="{{1}}" bindtap='tabClick'>近一周</view>
+          <view class="{{tabClick==2?'tabActive':'tabDays'}}" data-current="{{2}}" bindtap='tabClick'>近一月</view>
+          <view class='Arrow1'></view>
+        </view>
+        <!-- <view class='times-sle'>
+      <text>关注时间</text>
+      <image src='../../images/db-icon.png'></image>
+    </view> -->
+      </view>
+      <view class='customerList'>
+        <view class='customerList-li' wx:key='customerList' wx:for="{{statisticsList}}" data-customer="{{item.customerOpenId}}">
+          <image data-customer="{{item.customerOpenId}}" src='{{item.customer.customerAvatarUrl}}'></image>
+          <image data-customer="{{item.customerOpenId}}" src='../../images/wx-icon.png'></image>
+          <view data-customer="{{item.customerOpenId}}" class='customerList-r'>
+            <view data-customer="{{item.customerOpenId}}" class='customerList-name'>
+              <view data-customer="{{item.customerOpenId}}" class='name'>
+                <text data-customer="{{item.customerOpenId}}">{{item.customer.customerNickName}}</text>
+                <image data-customer="{{item.customer.like}}" data-customerId="{{item.customer.customerId}}" src='{{item.customer.like==0?"../../images/stars-normal.png":"../../images/stars-selected.png"}}' catchtap='openStars'></image>
+
+              </view>
+              <image catchtap='customerDetails' data-customer="{{item.customerOpenId}}" src='../../images/rigth-icon.png'></image>
+            </view>
+            <view class="labels">
+              <view data-customer="{{item.customerOpenId}}" wx:key="labers" wx:for="{{item.customer.labers}}">{{item.customerTagName}}</view>
+            </view>
+            <view data-customer="{{item.customerOpenId}}" catchtap='customerDetails' class='txtList'>关注时间：{{item.followTime==null?"":item.followTime}}</view>
+            <view data-customer="{{item.customerOpenId}}" catchtap='customerDetails' class='txtList'>最近浏览时间：{{item.recentBrowseTime}}</view>
+            <view data-customer="{{item.customerOpenId}}" catchtap='customerDetails' class='txtList'>最近浏览时长：{{item.stayTimeFormat}}</view>
+            <view data-customer="{{item.customerOpenId}}" catchtap='customerDetails' class='txtList'>最近浏览内容：《{{item.product.productName}}》</view>
+            <view data-customer="{{item.customerOpenId}}" catchtap='customerDetails' class='txtList'>浏览总时长：{{item.totalStayTimeFormat }}</view>
+            <view data-customer="{{item.customerOpenId}}" catchtap='customerDetails' class='txtList'>总点击数：{{item.totalBrowseCount}}次</view>
+          </view>
+          <view class='label-f'>
+            <button catchtap='openLabel' data-customer="{{item.customer.customerId}}">编辑标签</button>
+            <!-- <button plain='true' open-type='share'>联系顾客</button> -->
+          </view>
+        </view>
+      </view>
+      <view class='down'>
+        {{bottomTxt}}
+      </view>
+    </view>
+  </view>
+</view>

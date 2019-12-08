@@ -1,0 +1,50 @@
+<import src="../../component/tabBar/tabBar.wxml" />  
+ <template is="tabBar" data="{{tabBar: tabBar}}" /> 
+
+<view wx:if='{{!isLogined}}' class="home-pre-image-container">
+   <image src="https://daogouapi.youxuepai.com/file/wechat/img/0905171136811home-pre.png"  mode='widthFix' class="home-pre-image" /> 
+</view>
+
+
+<view wx:if='{{isLogined}}' >
+<view  class='banner'>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+    <block wx:for="{{imgUrls}}" wx:key="banner">
+      <swiper-item>
+        <image src="{{imgheadurl+item.imgUrl}}" data-url='{{item.refH5Url}}' 
+         data-carouseltype='{{item.carouselType}}' data-refmodule='{{item.refModule}}' bindtap='openWeb' class="slide-image" width="355" height="150"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='b-nav'>
+
+  <view class='resources' style='background:url(https://daogouapi.youxuepai.com/file/wechat/img/-s-ziyuanlianjie.png) no-repeat center;background-size: cover;' bindtap='openRecommend'>
+    <view class='txt'>
+    </view>
+  </view>
+
+  <view class='resources' bindtap="openOnlineEducation" style='background:url(https://daogouapi.youxuepai.com/file/wechat/img/0910163811270home-online-center.png) no-repeat center;background-size: cover;' >
+  </view>
+
+  <view class='resources1'>
+    <view class='Trains' style='background:url(https://youxuepai-wechat.oss-cn-beijing.aliyuncs.com/yxp/train.jpg) no-repeat center;background-size: cover;' bindtap='openTrain'>
+    <view>培训资料库</view>
+    </view>
+
+    <view class='Trains' style='background:url(https://daogouapi.youxuepai.com/file/wechat/img/zxk.png) no-repeat center;background-size: cover;' bindtap='auxiliarySales'>
+    <view>电教知识库</view>
+    </view>
+  </view>
+  <view class='resources1'>
+
+   <view class='Trains' style='background:url(https://daogouapi.youxuepai.com/file/wechat/img/czsp.png) no-repeat center;background-size: cover;' bindtap='operationalVideo'>
+    <view>操作视频</view>
+  </view>
+
+    <view class='Trains' style='background:url(https://youxuepai-wechat.oss-cn-beijing.aliyuncs.com/yxp/notice.png) no-repeat center;background-size: cover;' bindtap='openNotice'>
+    <view>近期公告</view>
+    </view>
+  </view>
+</view>
+</view>

@@ -1,0 +1,55 @@
+.navTab{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 10px solid #f6f5f5;
+}
+.navTab>view{
+  font-size: 30rpx;
+  color: #434343;
+  padding: 30rpx;
+}
+.TabActive{
+  color: #3BC26D !important;
+  border-bottom: 2px solid #3BC26D;
+}
+/*列表样式*/
+.list{
+  display: flex;
+  align-items: top;
+  padding: 30rpx;
+  border-bottom:1px solid #f6f5f5;
+}
+.list>image{
+  width: 78rpx;
+  height: 78rpx;
+  border-radius: 50%;
+}
+.list>view{
+  width: calc(100% - 90rpx);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20rpx;
+}
+.list>view>image{
+  width: 18rpx;
+  height: 30rpx;
+}
+.userInfo>view:nth-child(1){
+  font-size: 30rpx;
+  color: #434343;
+}
+.userInfo>view:nth-child(2){
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
+.userInfo>view:nth-child(3){
+  font-size: 28rpx;
+  color: #999999;
+}
+.userInfo>view:nth-child(4){
+  font-size: 28rpx;
+  color:red;
+}

@@ -1,0 +1,17 @@
+page{
+  background-color: #f6f5f5;
+}
+.section{
+  width: 100%;
+}
+.section>video{
+  width: 100%;
+  /* height:213px; */
+}
+.videoText{
+  margin-top: -10rpx;
+  padding: 30rpx;
+  background-color: #fff;
+  color: #534F4F;
+  font-size: 30rpx;
+}

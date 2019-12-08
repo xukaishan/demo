@@ -1,0 +1,65 @@
+/* pages/trainingRecordDetail/trainingRecorddetail.wxss */
+.slectList{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom: 1px solid #D8D8D8;
+}
+.slectList>view:nth-child(1){
+  color: #434343;
+  font-size: 32rpx;
+  width: 245rpx;
+}
+.slectList>view:nth-child(2){
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+.slectList>view:nth-child(2)>view{
+  color: #999999;
+  font-size: 30rpx;
+  margin-right: 15rpx;
+  width: 500rpx;
+  overflow: hidden;/*超出部分隐藏*/
+    text-overflow:ellipsis;/* 超出部分显示省略号 */
+    white-space: nowrap;/*规定段落中的文本不进行换行 */
+}
+.slectList>view:nth-child(2)>input{
+  font-size: 30rpx;
+  margin-right: 15rpx;
+}
+.slectList>view:nth-child(2)>image{
+  margin-top: 5rpx;
+  width: 20rpx;
+  height: 30rpx;
+}
+.content{
+  padding: 30rpx;
+}
+.content>view:nth-child(1){
+  color: #434343;
+  font-size: 32rpx;
+}
+.content>view:nth-child(2){
+  margin-top: 20rpx;
+  height: 250rpx;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  border: 1px solid #3BC26D;
+}
+.content>view:nth-child(2)>textarea{
+  font-size: 30rpx;
+}
+button{
+  background-color: #3BC26D;
+  color: #fff;
+  border: none;
+  outline: none;
+  margin: 20rpx 30rpx;
+}
+.picker{
+  font-size: 30rpx;
+  color: #999999;
+  margin-right: 15rpx;
+}

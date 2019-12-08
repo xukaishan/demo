@@ -1,0 +1,6 @@
+<view class="titel">{{question}}</view>
+<view class='times'>{{createTime}}</view>
+<!-- <view class='posin'>设置->应用程序->下载中心->存储->清除数据</view> -->
+<view class='images'>
+{{answer}}
+</view>

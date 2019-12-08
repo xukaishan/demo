@@ -2,7 +2,11 @@
  * @Description: 
  * @Author: xuks
  * @Date: 2019-07-19 14:32:03
+<<<<<<< Updated upstream
  * @LastEditTime: 2019-09-06 15:48:58
+=======
+ * @LastEditTime: 2019-08-20 12:28:53
+>>>>>>> Stashed changes
  */
 export const msg = (message) => {
     let myMsg = document.createElement('div');
@@ -45,6 +49,7 @@ export const debounce = (func, delay, immediate) => {
             }, delay);
         }
     }
+<<<<<<< Updated upstream
 }
 /* 递归 */
 function cpt_menu(arr) {
@@ -59,3 +64,6 @@ function cpt_menu(arr) {
       );
     });
   }
+=======
+}
+>>>>>>> Stashed changes

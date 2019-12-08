@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "header-tab": "/component/header-tab/index",
+      "clock-num-bar": "./clockNumBar/clockNumBar",
+      "clock-item-list": "./itemList/itemList"
+  }
+}

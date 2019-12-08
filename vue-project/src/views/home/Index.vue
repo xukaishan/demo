@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+<<<<<<< Updated upstream
     <!-- <Menu :list="list"></Menu> -->
     <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
     <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose" v-drag="true">
@@ -25,6 +26,17 @@
     <yxpSelector :rowItem="rowItem01" @rowItemDateChange="rowItemSelectChange01" />
     <yxpSelector :rowItem="rowItem2" @rowItemSelectChange="rowItemSelectChange2" />
     <yxpSelector :rowItem="rowItem3" @rowItemSelectChange="rowItemSelectChange3" />
+=======
+    <Menu :list="list"></Menu>
+    <button
+      @click="btnFn"
+      ref="btn"
+    >更新</button>
+    <Nav
+      :navArr="navArr"
+      @navChange="navChange"
+    />
+>>>>>>> Stashed changes
   </div>
 </template>
 
@@ -36,6 +48,7 @@ import yxpSelector from "yxp_selector";
 export default {
     components: {
         Menu,
+<<<<<<< Updated upstream
         Nav,
         VideoBase,
         yxpSelector
@@ -43,6 +56,12 @@ export default {
     data() {
         return {
             dialogVisible: false,
+=======
+        Nav
+    },
+    data () {
+        return {
+>>>>>>> Stashed changes
             list: this.$store.getters["get_menuitems"],
             updateList: [
                 {
@@ -104,6 +123,7 @@ export default {
                             name: "马来语"
                         }
                     ]
+<<<<<<< Updated upstream
                 },
                 {
                     id: "1382",
@@ -202,6 +222,14 @@ export default {
     },
     computed: {
         cp_menuitems() {
+=======
+                }
+            ]
+        };
+    },
+    computed: {
+        cp_menuitems () {
+>>>>>>> Stashed changes
             return this.$store.getters["get_menuitems"];
         }
     },
@@ -209,6 +237,7 @@ export default {
         cp_menuitems: {
             immediate: true,
             deep: true,
+<<<<<<< Updated upstream
             handler(val) {
                 this.list = val
             }
@@ -220,6 +249,19 @@ export default {
     methods: {
         /* 递归换键名 */
         cpt_menu(arr) {
+=======
+            handler (val) {
+                this.list = val;
+            }
+        }
+    },
+    mounted () {
+        console.log(this.$el);
+    },
+    methods: {
+        /* 递归换键名 */
+        cpt_menu (arr) {
+>>>>>>> Stashed changes
             return arr.map(itm => {
                 return (
                     (itm.children &&
@@ -231,6 +273,7 @@ export default {
                 );
             });
         },
+<<<<<<< Updated upstream
         btnFn() {
             this.$store.dispatch('ac_update_menu', this.updateList)
         },
@@ -267,6 +310,14 @@ export default {
         },
         
        
+=======
+        btnFn () {
+            this.$store.dispatch("ac_update_menu", this.updateList);
+        },
+        navChange (data) {
+            console.log(data);
+        }
+>>>>>>> Stashed changes
     }
 };
 </script>

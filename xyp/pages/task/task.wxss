@@ -1,0 +1,144 @@
+/* pages/task/task.wxss */
+
+page {
+  background-color: #f6f5f5;
+}
+
+.navTab {
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15rpx;
+  background-color: #fff;
+  height: 100rpx;
+}
+
+.navTab>view {
+  color: #434343;
+  font-size: 30rpx;
+  padding: 20rpx 10rpx;
+}
+
+.navTabActive {
+  color: #3bc26d !important;
+  border-bottom: 2px solid #3bc26d;
+}
+
+/* 任务进度 */
+
+.taskProgress {
+  background-color: #fff;
+  padding: 40rpx 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.taskProgress>view:nth-child(1) {
+  border-left: 6rpx solid #3bc26d;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 5rpx;
+}
+
+.taskProgress>view:nth-child(1)>text {
+  font-size: 30rpx;
+  color: #434343;
+  line-height: 30rpx;
+}
+
+.progressBox {
+  margin-top: 42rpx;
+  width: 100%;
+  height: 50rpx;
+  background-color: #e5e5e5;
+  border-top-left-radius: 25rpx;
+  border-bottom-left-radius: 25rpx;
+  border-top-right-radius: 25rpx;
+  border-bottom-right-radius: 25rpx;
+}
+
+.progressBox>view {
+  width: 0%;
+  height: 100%;
+  background-color: #3bc26d;
+  border-top-left-radius: 25rpx;
+  border-bottom-left-radius: 25rpx;
+  border-top-right-radius: 25rpx;
+  border-bottom-right-radius: 25rpx;
+}
+
+.Number {
+  background-color: #fff;
+  padding: 40rpx 30rpx;
+}
+
+.Number>view:nth-child(1) {
+  border-left: 6rpx solid #3bc26d;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 5rpx;
+}
+
+.Number>view:nth-child(1)>text {
+  font-size: 30rpx;
+  color: #434343;
+  line-height: 30rpx;
+}
+
+.contentList {
+  padding: 0 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.contentList>.list {
+  margin-top: 30rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 15rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentList>.list>view {
+  color: #434343;
+  font-size: 30rpx;
+}
+
+.contentList>.list>image {
+  width: 20rpx;
+  height: 30rpx;
+}
+
+.delets {
+  position: absolute;
+  right: 0rpx;
+  background-color: #3bc26d;
+  border-top-right-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+  height: 100%;
+  width: 140rpx;
+  color: #fff !important;
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 200rpx;
+}
+
+.showDelet {
+  transition: 0.5s;
+  -webkit-transform: translateX(0rpx);
+  -moz-transform: translateX(0rpx);
+  transform: translateX(0rpx);
+}
+
+.hiddenDelet {
+  transition: 0.5s;
+  -webkit-transform: translateX(140rpx);
+  -moz-transform: translateX(140rpx);
+  transform: translateX(140rpx);
+}

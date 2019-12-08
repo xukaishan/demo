@@ -1,0 +1,491 @@
+/* pages/onlineDetails/onlineDetails.wxss */
+
+/* 图文 */
+
+page {
+  /* width: 100%; */
+  height: 100%;
+  background-color: white;
+}
+
+.guide-card-top-margin {
+  width: 100%;
+  height: 147rpx;
+}
+
+.guide-card-top-container {
+  width: 70%;
+  height: 117rpx;
+  position: fixed;
+  left: 15%;
+  top: 30rpx;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.guide-top-card {
+  margin-left: 30rpx;
+  width: 75rpx;
+  height: 70rpx;
+  /* background-color: red; */
+}
+
+.guide-top-graph-container {
+  margin-right: 16rpx;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
+}
+
+.guide-top-text-gesture-container {
+  width: 100%;
+  height: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rebeccapurple; */
+}
+
+.guide-top-gesture {
+  width: 32rpx;
+  height: 28rpx;
+  /* background-color: red; */
+}
+
+.guide-top-text {
+  font-size: 28rpx;
+  color: #fff;
+  margin-right: 8rpx;
+}
+
+/* 浮标 */
+
+.float-top {
+  width: 60%;
+  position: fixed;
+  left: 20%;
+  top: 30rpx;
+  display: flex;
+  justify-content: center;
+  z-index: 9;
+}
+
+.float-left {
+  width: 100rpx;
+  position: fixed;
+  bottom: 50%;
+  left: 0rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+
+.float-right {
+  width: 100rpx;
+  position: fixed;
+  bottom: 50%;
+  right: 0rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+
+.float-bottom {
+  width: 60%;
+  position: fixed;
+  left: 20%;
+  bottom: 30rpx;
+  display: flex;
+  justify-content: center;
+  z-index: 9;
+}
+
+.txtImg {
+  padding: 30rpx 0;
+  background-color: white;
+}
+
+.titelName {
+  padding: 0 30rpx;
+  font-size: 35rpx;
+  color: #434343;
+}
+
+.times {
+  margin: 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.avatarContainer {
+  width: 180rpx;
+  height: 350rpx;
+  display: flex;
+  align-items: center;
+  /* background-color:yellow; */
+  border-radius: 10rpx;
+}
+
+.avatar {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  width: 120rpx;
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 10rpx;
+}
+
+.businessCard {
+  border-radius: 20rpx;
+  height: 350rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cardBadgeContainer {
+  margin-top: 30rpx;
+  width: 122rpx;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+}
+
+.cardBadge {
+  width: 122rpx;
+}
+
+.userContainer {
+  width: 100%;
+  height: 350rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.name {
+  color: #fff;
+  font-size: 36rpx;
+  margin-bottom: 20rpx;
+}
+
+.phone {
+  align-content: center;
+  margin-bottom: 12rpx;
+}
+
+.phone>image {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.phone>text {
+  margin-bottom: 24rpx;
+  margin-left: 12rpx;
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.adrres {
+  display: flex;
+  justify-content: left;
+}
+
+.adrres>image {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.adrres>text {
+  margin-left: 12rpx;
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.contact-buttons-container {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: red; */
+}
+
+.contact-buttons-container>view {
+  width: 50%;
+  height: 80rpx;
+  border: 1px solid #3bc26d;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-buttons-container>view:nth-child(1) {
+  color: #3bc26d;
+  margin-right: 15rpx;
+}
+
+.contact-buttons-container>view:nth-child(2) {
+  background-color: #3bc26d;
+  color: #fff;
+  margin-left: 15rpx;
+}
+
+.contact-buttons-container image {
+  width: 44rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.card-bottom-buttons-container {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #5a5a59;
+  font-size: 26rpx;
+  /* background-color: red; */
+}
+
+.card-bottom-buttons-container>view {
+  padding: 10rpx;
+  height: 80rpx;
+  box-shadow: 0px 3px 10px 0px rgba(8, 1, 3, 0.33);
+  border-radius: 10rpx;
+  align-items: center;
+}
+
+ .guide-card-share-Button {
+  width: 100%;
+  height: 100%;
+  margin-top: -80%;
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+button[class="guide-card-share-Button"]::after {
+  border: 0;
+}
+.guide-card-share-container {
+  display: flex;
+  align-items: center;
+}
+/* 
+.card-bottom-buttons-container>view:nth-child(1) {
+  width: 40%;
+  margin-right: 15rpx;
+  display: flex;
+  align-items: center;
+ } 
+
+.card-bottom-buttons-container>view:nth-child(2) {
+  width: 60%;
+  margin-left: 15rpx;
+  display: flex;
+  align-items: center;
+} */
+
+
+/* 以下为加入分享后的布局  */
+
+.card-bottom-buttons-container>view:nth-child(1) {
+  width: 16%;
+  margin-right: 15rpx;
+ } 
+
+.card-bottom-buttons-container>view:nth-child(2) {
+  width: 26%;
+  margin-left: 16rpx;
+  display: flex;
+  align-items: center;
+}
+
+.card-bottom-buttons-container>view:nth-child(3) {
+  width: 58%;
+  margin-left: 16rpx;
+  display: flex;
+  align-items: center;
+} 
+
+.card-bottom-buttons-container image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+
+.guide-like-container {
+  /* width: 100%; */
+  height: 60rpx;
+  padding: 0 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  color: #5a5a59;
+  font-size: 26rpx;
+  /* background-color: red; */
+}
+
+.guide-like-container text {
+  text-align: center;
+}
+
+.guide-like-container image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+/* 海报 */
+
+/* 底部弹窗样式 */
+
+.showModo {
+  transition: 0.8s;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 999;
+}
+
+.btn-box {
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+}
+
+.alertImg {
+  width: 100%;
+  padding-bottom: 50%;
+}
+
+.no-data-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-data-img {
+  width: 60%;
+}
+
+.no-data-text {
+  font-size: 34rpx;
+  color: #999;
+}
+.info{
+  padding: 10rpx 30rpx;
+}
+/* 内容 */
+.content{
+  padding: 0 30rpx;
+}
+/*新增列表样式*/
+.RelevantName{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  padding-right: 20rpx;
+  border-bottom: 20rpx solid #e4e4e4;
+}
+.RelevantName>view:nth-child(1){
+  border-left: 3px solid #3bc26d;
+  font-size: 35rpx;
+  padding-left: 20rpx;
+}
+.RelevantName>view:nth-child(2){
+  font-size: 28rpx;
+  color: #999;
+}
+.RelevantName>view:nth-child(2)>image{
+  width: 15rpx;
+  height: 15rpx;
+}
+.commodity{
+  background-color: #fff;
+}
+.commodityList{
+  display: flex;
+  /* justify-content: space-around; */
+  padding:10rpx 20rpx;
+  border-bottom: 1px solid #f6f5f5;
+  align-items: center;
+}
+.commodityList>view{
+  position: relative;
+}
+.commodityList>view>image:nth-child(1){
+  width: 215rpx;
+  height: 130rpx;
+  margin-right: 20rpx;
+}
+.commodityList>view>image:nth-child(2){
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  width: 43rpx;
+  height: 43rpx;
+}
+.iconright{
+  width: 20rpx;
+  height: 30rpx;
+  margin-left: 0rpx;
+  position: absolute;
+  right: 20rpx;
+}
+.comm-text{
+  width: auto
+
+}
+.comm-text>view:nth-child(1){
+  font-size: 30rpx;
+  color: #534F4F;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.comm-text>view:nth-child(3){
+  font-size: 28rpx;
+  color: #3BC26D;
+  border: 1px solid #3BC26D;
+  width: 150rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  float: right;
+  margin-top: 10rpx;
+  margin-right: 30rpx;
+}
+.b-comm{
+  color: #999999;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 16rpx;
+}

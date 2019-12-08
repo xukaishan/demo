@@ -1,0 +1,67 @@
+<view class='top-navs' style='{{showBtn?"height: 100%;":""}}'>
+  <view class='search'>
+    <view class='inp'>
+      <image src='../../images/search-icon.png'></image>
+      <input bindinput='search' placeholder='输入产品关键词或编号'></input>
+    </view>
+  </view>
+
+  <view class='b_down' wx:if="{{showDown}}">
+    <view class="txt {{tab==index?'tabActive':''}}" wx:for="{{tabData1}}">
+      <view data-current="{{index}}" data-setid='{{item.id}}' data-last='{{item.last}}' bindtap="clickTab">{{item.name}}</view>
+      <image src="{{tab==index?'../../images/bottom-icon1.png':'../../images/bottom-icon.png'}}">
+      </image>
+    </view>
+    <!-- <view class="txt {{tab==2?'tabActive':''}}">
+      <view data-current="2" bindtap="clickTab">{{item.trainingCategoryName}}</view>
+      <image src="{{tab==2?'../../images/bottom-icon1.png':'../../images/bottom-icon.png'}}"></image>
+    </view> -->
+  </view>
+
+  <view class='slect-box' wx:if="{{showBtn}}">
+
+    <view class='slect1-box'>
+
+      <view class="{{tab1==index?'slect-active':''}}" data-setid='{{item.id}}' data-last='{{item.last}}' data-current="{{index}}" wx:for="{{tabData2}}" catchtap='clickTab1'>{{item.name}}
+      </view>
+
+    </view>
+
+    <view class='slect2-box' wx:if="{{slect2}}">
+      <view class="{{tab2==index?'slect1-active':''}}" data-setid='{{item.id}}' data-last='{{item.last}}' data-current="{{index}}" wx:for="{{tabData3}}" catchtap='clickTab2'>{{item.name}}
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='commodity'>
+
+  <view class='commodityList' wx:for="{{commodityList}}" data-item="{{item}}" bindtap="openDetailist">
+
+    <view>
+      <image src='{{imgheadurl+item.coverImgUrl}}' mode='aspectFill'>
+      </image>
+    </view>
+
+<!-- comm-text -->
+    <view class='comm-text' data-content="{{item.trainingDataDesc}}">
+
+      <view data-title="{{item.trainingDataName}}">{{item.trainingDataName}}
+      </view>
+
+      <view class='b-comm'>
+        <text data-content="{{item.trainingDataDesc}}">{{item.trainingDataDesc}}
+       </text>
+      </view>
+
+    </view>
+<!-- comm-text -->
+
+    <image class='iconright' src='../../images/rigth-icon.png'>
+    </image>
+  </view>
+</view>
+
+<view class='down'>
+  {{bottomTxt}}
+</view>

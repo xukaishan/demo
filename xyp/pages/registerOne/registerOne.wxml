@@ -1,0 +1,45 @@
+<view  class="top-container">
+  <view class="search">
+    <view class='inp'>
+      <image src='../../images/search-icon.png'></image>
+      <input bindinput='search' placeholder="请输入关键字"></input>
+    </view>
+
+  </view>
+
+  <!--wx:if="{{registerInfoResData.length > 0}}"-->
+  <view class="header-container">
+    <view>代理商</view>
+    <view bindtap="sortData" data-option="{{1}}" class="sort">
+      <text>注册率</text>
+     
+      <view class="sort-image-container">
+        <image class="sort-image-asc" src="{{sortMethods[0]=='desc' ? '../../images/sort_green_down.png' : '../../images/sort_gray_down.png'}}" mode="widthFix"></image>
+        <image class="sort-image-desc" src="{{sortMethods[0]=='desc' ? '../../images/sort_gray_down.png' : '../../images/sort_green_down.png'}}" mode="widthFix"></image>
+      </view>
+    </view>
+    <view bindtap="sortData" data-option="{{2}}" class="sort">
+      <text>注册终端数</text>
+
+      <view class="sort-image-container">
+        <image class="sort-image-asc" src="{{sortMethods[1]=='desc' ? '../../images/sort_green_down.png' : '../../images/sort_gray_down.png'}}" mode="widthFix"></image>
+        <image class="sort-image-desc" src="{{sortMethods[1]=='desc' ? '../../images/sort_gray_down.png' : '../../images/sort_green_down.png'}}" mode="widthFix"></image>
+      </view>
+
+    </view>
+  </view>
+</view>
+
+<view class="content-container">
+
+  <view wx:for="{{registerInfoResData}}" wx:for-index="idx" wx:key="" data-idx="{{idx}}" data-item="{{item}}" catchtap="openRegister">
+    <view class="{{idx==0? 'cell-container-total' : 'cell-container'}}">
+      <view>{{item.agentName}}</view>
+      <view class="container">
+        <circle draw="{{'registerOne'+idx}}" per='{{item.registerRate*100.0}}' r='50' />
+      </view>
+      <view>{{item.registerTerminals}}</view>
+      <image class="cell-disclosure" src="{{idx==0? '': '../../images/rigth-icon.png'}}"></image>
+    </view>
+  </view>
+</view>

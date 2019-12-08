@@ -1,0 +1,210 @@
+page {
+  background-color: #f6f5f5;
+}
+
+.top-navs {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.search {
+  height: 120rpx;
+  background-color: #fff;
+  /* padding: 30rpx 30rpx 0 30rpx; */
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.inp {
+  width: 100%;
+  border-radius: 40rpx;
+  background-color: #f6f5f5;
+  padding-left: 60rpx;
+  position: relative;
+  height: 75rpx;
+}
+
+.inp>image {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  left: 15rpx;
+  top: 20rpx;
+}
+
+.inp>input {
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+}
+
+.b_down {
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #534f4f;
+  border-bottom: 1px solid #f6f5f5;
+  padding: 0 30rpx;
+}
+
+.b_down>view {
+  width: 100%;
+  line-height: 85rpx;
+  font-size: 32rpx;
+  height: 80rpx;
+  text-align: center;
+}
+
+.b_down>view>image {
+  width: 35rpx;
+  height: 40rpx;
+}
+
+.txt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150rpx;
+}
+
+.txt:nth-child(1)>view {
+  width: 150rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tabActive {
+  color: #3bc26d;
+}
+
+.slect-box {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.slect-btn {
+  width: 100%;
+  padding: 30rpx;
+  background-color: #fff;
+}
+
+.slect-btn>view {
+  margin-bottom: 10rpx;
+  min-width: 130rpx;
+  padding: 5rpx 10rpx;
+  background-color: #efeded;
+  color: #534f4f;
+  font-size: 28rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+  display: inline-block;
+  margin-right: 25rpx;
+}
+
+.slect-btnActive {
+  color: #3bc26d !important;
+  border: 1px solid #3bc26d;
+}
+
+.commodity {
+  margin-top: 240rpx;
+  background-color: #fff;
+}
+
+.commodityList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  color: #534f4f;
+  padding: 30rpx;
+  border-bottom: 1px solid #f6f5f5;
+}
+
+/* .commodityList{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding:20rpx 30rpx;
+  border-bottom: 1px solid #D8D8D8;
+}
+.commodityList>image{
+  width: 300rpx;
+  height: 130rpx;
+  margin-right: 20rpx;
+}
+.comm-text image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+}
+.comm-text>view:nth-child(1){
+  font-size: 30rpx;
+  color: #534F4F;
+}
+.comm-text>view:nth-child(3){
+  font-size: 28rpx;
+  color: #3BC26D;
+  border: 1px solid #3BC26D;
+  width: 150rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  float: right;
+  margin-top: 10rpx;
+  margin-right: 30rpx;
+}
+.b-comm{
+  color: #999999;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+/* 城市选择 */
+
+.city {
+  padding: 20rpx 0;
+  width: 100%;
+  height: 400rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.city>view::-webkit-scrollbar {
+  display: none;
+}
+
+.city>view {
+  width: 100%;
+  height: 100%;
+  color: #999;
+  font-size: 28rpx;
+  overflow: scroll;
+}
+
+.city image {
+  width: 10rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+
+.cityName {
+  margin: 10rpx 0;
+}
+
+.cityActives {
+  color: #3bc26d;
+}

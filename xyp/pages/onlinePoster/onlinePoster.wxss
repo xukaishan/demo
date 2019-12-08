@@ -1,0 +1,32 @@
+/* pages/onlinePoster/onlinePoster.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  background-color: #edeeef;
+}
+
+.float-Bottom {
+  margin: 30rpx;
+  background-color: #3bc26d;
+  color: #fff;
+  position: fixed;
+  width: 690rpx;
+  bottom: 10rpx;
+}
+
+
+.float-bottom-image {
+  margin: 30rpx;
+  color: #fff;
+  position: fixed;
+  width: 686rpx;
+  height: 100rpx;
+  bottom: 10rpx;
+}
+
+.image {
+  width: auto;
+  height: 100%;
+  display: flex;
+}

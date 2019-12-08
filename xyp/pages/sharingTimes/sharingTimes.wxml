@@ -1,0 +1,38 @@
+<view class='b_down'>
+  <view class="{{tab==0?'tabActive':''}}" data-current="0" bindtap="clickTab">今日</view>
+  <view class="{{tab==1?'tabActive':''}}" data-current="1" bindtap="clickTab">近一周</view>
+  <view class="{{tab==2?'tabActive':''}}" data-current="2" bindtap="clickTab">近一月</view>
+  <view class="{{tab==3?'tabActive':''}}" data-current="3" bindtap="clickTab">全国排名</view>
+</view>
+<view class='commodity' wx:if='{{tab<3}}'>
+    <view class='commodityList' wx:for="{{share}}"  bindtap='aWeek' data-customer="{{item.product.productId}}">
+      <image src='{{url+item.product.productImgUrl}}' data-customer="{{item.product.productId}}"></image>
+      <view class='comm-text' data-customer="{{item.product.productId}}">
+        <view data-customer="{{item.product.productId}}">{{item.product.productName}}</view>
+        <view class='b-comm' data-customer="{{item.product.productId}}">
+          <text data-customer="{{item.product.productId}}">{{item.product.productDesc}}</text>
+          <image src='../../images/rigth-icon.png' data-customer="{{item.product.productId}}"></image>
+        </view>
+        <view data-customer="{{item.product.productId}}">
+          <view data-customer="{{item.product.productId}}">链接来源：{{item.shareChannelName}}</view>
+          <view data-customer="{{item.product.productId}}">点击次数：{{item.watchCount}}次</view>
+          <view data-customer="{{item.product.productId}}">分享次数：{{item.shareCount}}次</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="ranking" wx:if='{{tab==3}}'>
+  <view class='rankingList'>
+    <view class='b-list' wx:for='{{rankList}}'>
+      <view class='rankNum'>{{index+1}}</view>
+      <view class='listName'>
+        <view wx:if='{{item.product}}'>{{item.product.productName}}</view>
+        <view>转发数：{{item.shareCount}}</view>
+      </view>
+    </view>
+</view>
+  </view>
+  <view class='down'>
+    {{bottomTxt}}
+  </view>
+  

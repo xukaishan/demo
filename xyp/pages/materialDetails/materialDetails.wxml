@@ -1,0 +1,46 @@
+<import src="../../wxParse/wxParse.wxml" />
+
+<!-- 多视频 + 图文详情 -->
+
+<view wx:if='{{suppliesVideoList.length > 0}}' class="section tc">
+
+  <block wx:for="{{suppliesVideoList}}" wx:key="" wx:for-item="item" wx:for-index="index">
+
+    <video id="myVideo" title="视频" src="{{imgheadurl+item.suppliesVideoUrl }}" custom-cache="{{false}}" bindplay="openPlay" bindpause="updataPlayTime" bindended="updataPlayTime" auto-pause-if-open-native controls objectFit='cover'>
+    </video>
+
+    <block wx:for="{{suppliesVideoContentList}}" wx:key="" wx:for-item="subItem" wx:for-index="subIndex">
+      <view wx:if='{{index==subIndex}}' class="content">
+        <template is="wxParse" data="{{wxParseData:subItem}}" />
+      </view>
+    </block>
+
+  </block>
+
+</view>
+
+<!-- 单视频 + 图文详情 -->
+<view wx:if='{{suppliesType==1 && suppliesVideoList.length<=0}}' class="section tc">
+  <video id="myVideo" title = "视频" src="{{imgheadurl+videoUrl}}" custom-cache="{{false}}" bindplay="openPlay" bindpause="updataPlayTime" bindended="updataPlayTime" auto-pause-if-open-native controls objectFit='cover'></video>
+  <view class='videoText'>
+  <view>{{content}}</view>
+  <view>{{operavideoDesc}}</view>
+  </view>
+  <view class="details">
+  <view wx:if='{{isHiddenGraphTextTitle==0}}'>图文详情</view>
+  </view>
+  <view class="content">
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>
+
+<!-- 纯图文详情 -->
+<view wx:if='{{suppliesType==2}}' class="section tc">
+  <view class="content">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+</view>
+
+<!-- 纯H5链接 -->
+<web-view wx:if='{{suppliesType==3}}' src="{{h5Url}}" bindmessage='receivePostMsg'>
+</web-view>

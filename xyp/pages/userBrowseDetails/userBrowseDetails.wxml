@@ -1,0 +1,5 @@
+<view class='list' wx:for="{{num}}">
+  <view>浏览时间:{{item.trackStartTime}}</view>
+  <view>浏览时长:{{item.stayTimeFormat}}</view>
+  <view>链接来源:{{item.shareChannelName}}</view>
+</view>

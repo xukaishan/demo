@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../component/ec-canvas/ec-canvas",
+    "circle": "../../component/circle/circle"
+  },
+  "navigationBarTitleText": "注册情况"
+}

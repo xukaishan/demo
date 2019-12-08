@@ -1,0 +1,128 @@
+/* component/zy-modal/zy-modal.wxss */
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+.container {
+  position: absolute;
+  display: flex;
+  /* flex-direction: column; *//* width: 80%;
+  height: 50%; */
+  width: 80%;
+  height: 512rpx;
+  background-color: white;
+  border-radius: 10rpx;
+}
+
+.deleteIcon {
+  position: absolute;
+  display: flex;
+  width: 80rpx;
+  height: 80rpx;
+  right: -10rpx;
+  top: -10rpx;
+}
+
+.alterPic {
+  position: absolute;
+  /* left: 0; *//* display: flex; *//* flex-direction: row; */
+  display: flex;
+  width: auto;
+  height: 50%;
+  /* padding-left: 30rpx; */
+  left: 30rpx;
+  right: 30rpx;
+  bottom: 130rpx;
+  align-items: center;
+  align-content: center;
+}
+
+.title {
+  font-size: 30rpx;
+  color: black;
+  position: absolute;
+  display: flex;
+  width: auto;
+  height: 30%;
+  top: 40rpx;
+  left: 30rpx;
+  right: 30rpx;
+  /* background-color: red; */
+}
+
+.content {
+  margin-top: 30rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  bottom: 30rpx;
+  font-size: 30rpx;
+  color: #888;
+}
+
+.modal-btn-wrapper {
+  position: absolute;
+  /* left: 0; *//* display: flex; *//* flex-direction: row; */
+  height: 80rpx;
+  /* line-height: 100rpx; *//* border-top: 1rpx solid rgba(7,17,27,0.1); *//* width: 80%; */
+  left: 30rpx;
+  right: 30rpx;
+  bottom: 30rpx;
+  align-items: center;
+  align-content: center;
+}
+
+/* .cancel-btn, .confirm-btn {
+ height: 100rpx;
+ line-height: 100rpx;
+ text-align: center;
+ font-size: 32rpx;
+ width: 100%;
+} */
+
+.cancel-btn, .confirm-btn {
+  height: 80rpx;
+  text-align: center;
+  font-size: 32rpx;
+  width: 100%;
+  color: #fff;
+  background-color: #3bc26d;
+  /* 
+ margin: 30rpx;
+  background-color: #3bc26d;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  bottom: 10rpx; */
+}
+
+.cancel-btn {
+  border-right: 1rpx solid rgba(7, 17, 27, 0.1);
+}
+
+.float-Bottom {
+  /* width: 80%;
+    position: fixed;
+    bottom: 20%;
+    right: 0rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9; */
+  margin: 30rpx;
+  background-color: #3bc26d;
+  color: #fff;
+  position: fixed;
+  width: 690rpx;
+  bottom: 10rpx;
+}

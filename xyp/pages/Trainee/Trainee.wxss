@@ -1,0 +1,175 @@
+/* pages/Trainee/Trainee.wxss */
+
+pages {
+  background-color: #f6f5f5;
+}
+
+.search {
+  height: 120rpx;
+  background-color: #f1f1f1;
+  /* padding: 30rpx 30rpx 0 30rpx; */
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.inp {
+  width: 100%;
+  border-radius: 40rpx;
+  background-color: #fff;
+  padding-left: 60rpx;
+  position: relative;
+  height: 75rpx;
+}
+
+.inp>image {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  left: 15rpx;
+  top: 20rpx;
+}
+
+.inp>input {
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+}
+
+.slectList {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  padding: 30rpx;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.slectList>view:nth-child(1) {
+  font-size: 32rpx;
+  color: #434343;
+}
+
+.slectList-text {
+  color: #999;
+  font-size: 30rpx;
+  margin-left: 16rpx;
+  text-align: left;
+  overflow: hidden; /*超出部分隐藏*/
+  text-overflow: ellipsis; /* 超出部分显示省略号 */
+  white-space: nowrap; /*规定段落中的文本不进行换行 */
+  width: 80%;
+}
+
+.item_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.select_icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.text {
+  margin-left: 30rpx;
+}
+
+/*选择样式*/
+
+.whole {
+  display: flex;
+  align-items: center;
+  padding: 19rpx 30rpx;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.whole>view:nth-child(2)>text {
+  font-size: 32rpx;
+  color: #434343;
+  margin-left: 8px;
+}
+
+.whole>view:nth-child(2) {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Selection {
+  width: 43rpx;
+  height: 43rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #a8a9a9;
+  transition: 1s;
+}
+
+.Selection>image {
+  transition: 1s;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.SelectionActive {
+  transition: 1s;
+  width: 43rpx;
+  height: 43rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #3bc26d;
+}
+
+.SelectionActive>image {
+  transition: 1s;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.one {
+  display: flex;
+  align-items: center;
+  padding: 19rpx 30rpx;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.one>text {
+  font-size: 32rpx;
+  color: #434343;
+  margin-left: 8px;
+}
+
+.TwoBox {
+  padding-left: 50rpx;
+}
+
+.TwoBoxs {
+  height: 0;
+  overflow: hidden;
+}
+
+.Two {
+  display: flex;
+  align-items: center;
+  padding: 19rpx 30rpx;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.Two>text {
+  font-size: 32rpx;
+  color: #545454;
+  margin-left: 8px;
+}
+
+.commit-button {
+  position: fixed;
+  background-color: #3bc26d;
+  color: #fff;
+  bottom: 30rpx !important;
+  left: 30rpx;
+  right: 30rpx;
+}

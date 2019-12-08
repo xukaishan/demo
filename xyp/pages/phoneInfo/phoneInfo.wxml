@@ -1,0 +1,13 @@
+<view class='phoneInfo'>
+<view>
+<text>手机号码</text>
+<input type='number' placeholder='请输入手机号码' placeholder-class='tips' bindinput='getphone' maxlength='11' value='{{phone}}'></input>
+<!-- <button class='{{codetype?"getyzm":"codetype"}}' bindtap='{{codetype?"getyzm":""}}'>{{codeTime}}</button> -->
+<button class='{{codetype?"getyzm":"codetype"}}' bindtap='{{codetype?"getyzm":""}}'> {{buttonTitle}}</button>
+</view>
+<view>
+<text>验证码</text>
+<input type='number' placeholder='短信验证码' placeholder-class='tips' bindinput='getnum' maxlength='6'></input>
+</view>
+<button bindtap='yesbtn'>确定</button>
+</view>

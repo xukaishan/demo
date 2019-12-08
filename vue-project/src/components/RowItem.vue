@@ -1,5 +1,10 @@
 <template>
+<<<<<<< Updated upstream
   <div class="rowItem" :class="rowItem.class">
+=======
+
+  <div class="rowItem" :class="(rowItem.classId||rowItem.class)">
+>>>>>>> Stashed changes
     <div class="tit">{{rowItem.tit}}</div>
     <!-- 全部 -->
     <div
@@ -51,6 +56,7 @@
       <slot name="con_slot"></slot>
     </div>
   </div>
+  
 </template>
 <script>
 export default {
@@ -71,6 +77,7 @@ export default {
                     ]
                 };
             }
+<<<<<<< Updated upstream
         },
         fn:Function
 
@@ -105,6 +112,76 @@ export default {
                 }
             }
         }
+=======
+          ]
+        };
+      }
+    }
+  },
+  data() {
+    return {
+      params: {
+        id: "",
+        name: ""
+      },
+      showMore: true,
+      notShowAll: true,
+      dateData: [],
+      dateDataInit: true
+    };
+  },
+  watch: {
+    params: {
+      deep: true,
+      handler(val) {
+        if (this.rowItem.class !== "date") {
+          this.$emit("rowItemSelectChange", this.params);
+        }
+      }
+    },
+    dateData: {
+      deep: true,
+      handler(val) {
+        if (!this.dateDataInit) {
+          this.$emit("rowItemDateChange", this.dateData);
+        }
+      }
+    }
+  },
+  computed: {},
+  mounted() {
+    if (this.rowItem.class === "date") {
+      this.initDatePicker();
+    }
+    this.isShowLookMore();
+    window.addEventListener("resize", this.isShowLookMore);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.isShowLookMore);
+  },
+  methods: {
+    isShowLookMore() {
+      this.showMore =
+        this.$refs.ulel && this.$refs.ulel.getBoundingClientRect().height > 38;
+    },
+    allHandlerClick() {
+      if (!this.params.id || !this.params.name) return;
+      this.params = {};
+      this.style();
+    },
+    itemHandlerClick(item) {
+      if (this.params.id === item.id && this.params.name === item.name) return;
+      if (this.rowItem.class === "date") {
+        this.dateData = this.dateData || [];
+        this.dateData.splice(0, 1, this.computeDate(parseInt(item.id)));
+        this.dateData.splice(1, 1, this.computeDate(0));
+        this.$nextTick(()=>{
+          this.dateDataInit = false;
+        })
+      }
+      this.params = item;
+      this.style();
+>>>>>>> Stashed changes
     },
     computed: {},
     created() {
@@ -118,8 +195,17 @@ export default {
         this.isShowLookMore();
         window.addEventListener("resize", this.isShowLookMore);
     },
+<<<<<<< Updated upstream
     beforeDestroy() {
         window.removeEventListener("resize", this.isShowLookMore);
+=======
+    initDatePicker() {
+      document
+        .querySelectorAll(
+          `.${this.rowItem.classId || this.rowItem.class} .activeFirst`
+        )[0]
+        .click();    
+>>>>>>> Stashed changes
     },
     methods: {
         RowItemTestFn(val){
@@ -204,6 +290,7 @@ export default {
 };
 </script>
 <style lang="less">
+
 .rowItem {
   display: flex;
   white-space: nowrap;
