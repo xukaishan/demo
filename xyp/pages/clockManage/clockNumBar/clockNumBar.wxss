@@ -21,12 +21,12 @@
     align-items: center;
 }
 .clock-num-bar .num-bar-head .num-bar-head-lf .num-bar-head-img{
-    width: 20%;
-    height: 100%;
+    width: 50rpx;
+    height: 50rpx;
 }
 .clock-num-bar .num-bar-head .num-bar-head-lf .rigth-icon{
-    width: 6%;
-    height: 30%;
+    width: 40rpx;
+    height: 40rpx;
 }
 .clock-num-bar .num-bar-head .num-bar-head-lf .lf-date{
     width: 80%;
@@ -50,6 +50,18 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    /* border-right: 4rpx solid #ccc; */
+}
+.clock-num-bar .num-bar-body .bar-body-lf::after{
+    content: '';
+    display: block;
+    height: 30%;
+    width: 100%;
+    padding: 5% 0;
+    border-right: 2rpx solid #f0f0f0;
+    position: absolute;
+    top: 30%;
 }
 .clock-num-bar .num-bar-body .bar-body-rig{
     width: 50%;

@@ -2,18 +2,27 @@
 /* @import './clockNumBar/clockNumBar.wxss';
 @import '../../component/header-tab/index.wxss'; */
 .clock-manage{
-    height: 100vh;
     background: #f3f3f3;
 }
 .header{
-    height: 14vh;
+    height: 170rpx;
     background: #3BC26D
+}
+.header-bg{
+    width: 100%;
+    height: 170rpx;
+
 }
 .tab-clock{
     width: 100%;
     position: absolute;
     top: 86rpx;
 }
-.list{
+.tab-select{
     margin-top: 200rpx;
+    /* min-height: 76rpx; */
+
+}
+.list{
+   
 }

@@ -1,0 +1,38 @@
+<!-- component/select-tab/index.wxml -->
+<!-- <view class="select-tab">
+    <view class="tab">
+        <view class="tab-item" wx:for="{{tabList}}" wx:key="idx" data-item="{{item}}" bind:tap="handleTabItem">
+            <view class="itm-box">
+                <view class="item-label">{{item.label}}</view>
+                <image class="item-img" src="../../images/icon_page.png"></image>
+            </view>
+        </view>
+    </view>
+    <scroll-view class="scroll-box" scroll-y="true" style="max-height: 300rpx;">
+        <view class="drop-box" wx:for="{{tabList}}" wx:key="idx" wx:if="{{item.idx === activeIdx}}">
+            <view class="drop-itm" wx:for="{{item.children}}" wx:key="idx">
+                {{item.label}}
+            </view>
+        </view>
+    </scroll-view>
+</view> -->
+<view class="nav">
+    <view class="nav-child {{item.idx === activeIdx && item.isOpen ? 'active' : ''}}" wx:for="{{tabList}}" wx:key="idx" bindtap="handleTabItem" hidden='{{!tabList.length > 0}}' data-nav="2" data-item="{{item}}">
+        <view class="itm-box">
+            <view class="item-label">{{item.label}}</view>
+            <image wx:if="{{item.type === 'drop'}}" class="item-img" src="../../images/icon_page.png"></image>
+            <image wx:else="{{item.type === 'select'}}" class="item-img-select" src="../../images/icon_ascending.png"></image>
+        </view>
+    </view>
+</view>
+<view class="container container_hd {{item.idx === activeIdx && item.isOpen ? 'show' : 'disappear'}}" wx:for="{{tabList}}" wx:key="idx" wx:if="{{item.children.length > 0}}">
+    <view class='z-height'>
+        <view>
+            <block wx:for="{{item.children}}" wx:key="idx">
+                <view class="sortitem {{selected_source_id==item.idx ? ' active ' : ' '}}" data-subitem='{{item}}' bindtap='selectTabChange'>
+                    {{item.label}}
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

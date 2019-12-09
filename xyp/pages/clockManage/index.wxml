@@ -4,9 +4,13 @@
 <view class="clock-manage">
     <view class="header">
         <header-tab bind:headTabChange="headTabChange" />
+        <image class="header-bg" src="../../images/bj_03.png"></image>
     </view>
     <view class="tab-clock">
-        <clock-num-bar />
+        <clock-num-bar bind:numBarChange="numBarChange" />
+    </view>
+    <view class="tab-select">
+        <select-tab bind:selectTabChange="selectTabChange" />
     </view>
     <view class="list">
         <clock-item-list />

@@ -68,6 +68,14 @@ Page({
   /* 事件 */
   headTabChange (e) {
     let item = e.detail;
-    console.log('item=>', item);
-  }
+    console.log('headTabChange=>', item);
+  },
+  numBarChange (e) {
+    let data = e.detail;
+    console.log('numBarChange=>', data);
+  },
+  selectTabChange (e) {
+    let data = e.detail;
+    console.log('selectTabChange=>', data);
+  },
 })
