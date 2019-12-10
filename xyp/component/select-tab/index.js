@@ -91,6 +91,7 @@ Component({
             let arr = [...this.data.tabList];
             this.setData({
                 activeIdx: item.idx,
+                activeSubIdx: item.idx,
                 tabList: arr.map(v => {
                     if (item.idx === v.idx) {
                         return Object.assign(item, {

@@ -68,7 +68,8 @@
     "pages/trainingRecordDetail/trainingRecorddetail",
     "pages/SubscribeMessage/SubscribeMessage",
     "pages/clockManage/index",
-    "component/header-tab/index"
+    "component/header-tab/index",
+    "pages/userClockDetails/index"
   ],
   "window": {
     "backgroundColor": "#eeeeee",

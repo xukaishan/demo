@@ -41,7 +41,7 @@ App({
                 "pagePath": "/pages/clockManage/index",
                 "text": "打卡",
                 "iconPath": "/images/tabbar-guide-icon.png",
-                "selectedIconPath": "/images/tabbar-guide-icon-active.png",
+                "selectedIconPath": "/images/icon_clock_in_green.png",
                 "selectedColor": "#4EDF80",
                 active: false
             },

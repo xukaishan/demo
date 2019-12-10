@@ -39,6 +39,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 30rpx;
 }
 .itm-box .item-img{
     width: 40rpx;
@@ -59,7 +60,14 @@
     height: 300rpx; */
     
 }
-
+.stop-scroll {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
 
 /*  */
 
@@ -81,6 +89,7 @@
     display: flex;
     border-bottom: 1px solid #f7f7f7;
     background: #fff;
+    padding: 0 22rpx;
   }
   
   .nav-child {

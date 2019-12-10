@@ -11,25 +11,29 @@ Component({
                 ava: '../../../images/me-active.png',
                 name: '阿木木',
                 day: 14,
-                all: 20
+                all: 20,
+                isPatch:false,
             },
             {
                 ava: '../../../images/me-active.png',
                 name: '光辉使者',
                 day: 10,
-                all: 20
+                all: 20,
+                isPatch:false,
             },
             {
                 ava: '../../../images/me-active.png',
                 name: '费雷尔卓德',
                 day: 7,
-                all: 20
+                all: 20,
+                isPatch:true,
             },
             {
                 ava: '../../../images/me-active.png',
                 name: '盖伦',
                 day: 5,
-                all: 25
+                all: 25,
+                isPatch:false,
             },
         ]
     }

@@ -4,7 +4,8 @@
     align-items: center;
     padding: 10rpx 30rpx;
     background: #fff;
-    border-bottom: 2rpx solid #f1f1f1
+    border-bottom: 2rpx solid #f1f1f1;
+    font-size: 28rpx;
 }
 .clock-item-list .itm{
     height: 120rpx;
@@ -24,7 +25,20 @@
     height: 100%;
 }
 .clock-item-list .name{
-    flex: 0 1 400rpx
+    flex: 0 1 400rpx;
+}
+.clock-item-list .name.isPatch::after{
+    content: '补';
+    width: 16rpx;
+    height: 16rpx;
+    box-sizing: border-box;
+    line-height: 16rpx;
+    border-radius: 50%;
+    background: #ffbc3a;
+    color: #fff;
+    padding: 6rpx;
+    margin: -24rpx 0 0 14rpx;
+    font-size: 14rpx;
 }
 .clock-item-list .days-box{
     width: 140rpx;
@@ -35,6 +49,6 @@
     align-items: baseline;
 }
 .clock-item-list .days-box .day{
-    color: #c08f52;
+    color: #dc870c;
     font-size: 36rpx;
 }

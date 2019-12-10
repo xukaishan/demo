@@ -29,7 +29,7 @@
     <view class='z-height'>
         <view>
             <block wx:for="{{item.children}}" wx:key="idx">
-                <view class="sortitem {{selected_source_id==item.idx ? ' active ' : ' '}}" data-subitem='{{item}}' bindtap='selectTabChange'>
+                <view class="sortitem {{activeSubIdx===item.idx ? ' active ' : ' '}}" data-subitem='{{item}}' bindtap='selectTabChange'>
                     {{item.label}}
                 </view>
             </block>
