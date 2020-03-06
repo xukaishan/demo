@@ -1,6 +1,0 @@
-<view class='trainList'>
-<!-- <image src='{{item.imgUrl}}' data-customer="{{item.trainingCategoryId}}" data-last='{{item.last}}' wx:for="{{imgUrlList}}" bindtap='openFlat' ></image> -->
-<image bindtap="openMateriel" src='https://daogouapi.youxuepai.com/file/wechat/img/zxwlk.png'></image>
-<!-- <image bindtap="openCourse" src='https://daogouapi.youxuepai.com/file/wechat/img/jccx.png'></image> -->
-<image bindtap="openQuestion" src='https://daogouapi.youxuepai.com/file/wechat/img/wdk.png'></image>
-</view>

@@ -1,3 +1,0 @@
-<view class='questionList'>
-<view wx:for="{{questionList}}" bindtap='questionDetails' data-qabankid="{{item.qaBankId}}"  data-questionclassificationid="{{item.questionClassificationId}}" >{{item.question}}</view>
-</view>

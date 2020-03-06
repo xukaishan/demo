@@ -1,1 +1,0 @@
-<web-view src="{{h5url}}" bindmessage='receivePostMsg'></web-view>

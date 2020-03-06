@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "ec-canvas": "../../component/ec-canvas/ec-canvas",
-    "swider-left": "../component/slider-left/slider-left",
-    "circle": "../../component/circle/circle"
-  },
-  "navigationBarTitleText": "注册情况"
-}

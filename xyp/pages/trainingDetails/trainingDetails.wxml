@@ -1,6 +1,0 @@
-<view class="section tc">
-  <video id="myVideo" src="{{videoUrl}}" bindplay="openPlay" custom-cache="{{false}}" bindpause="updataPlayTime" bindended="updataPlayTime" auto-pause-if-open-native controls objectFit='cover'></video>
-  <view class='videoText'>
-  <text selectable ='ture'  bindlongtap='copy' >{{content}}</text>  
-  </view>
-</view>

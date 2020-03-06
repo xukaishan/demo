@@ -1,8 +1,0 @@
-<!--pages/Managers Home/SubscribeMessage/SubscribeMessage.wxml-->
-<view class='authoriztion'>
-<text class="title">授权说明</text>
-<view>
-只有授权优学派订阅消息才能获得最新的资源通知哦！
-</view>
-<button bindtap="requestSubscribe">订阅消息</button>
-</view>

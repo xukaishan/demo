@@ -1,6 +1,0 @@
-<!-- component/header-tab.wxml -->
-<view class="header-tab">
-    <view class="head-item {{select === item.id && 'select' || ''}}" wx:for="{{options.headerTabList}}" wx:key="id" data-item="{{item}}" bind:tap="headTabChange">
-        {{item.name}}
-    </view>
-</view>

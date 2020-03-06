@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "ec-canvas": "../../component/ec-canvas/ec-canvas"
-  },
-  "navigationBarTitleText": "顾客总数"
-  
-}
